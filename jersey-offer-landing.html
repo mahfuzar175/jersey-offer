@@ -352,8 +352,8 @@ input, textarea { font-family: inherit; }
 .product-grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 15px;
-  border-top: 1px solid var(--slate-200);
+  gap: 20px;
+  /* border-top: 3px solid var(--slate-200); */
 }
 .product-card {
   background: var(--white);
@@ -405,11 +405,12 @@ input, textarea { font-family: inherit; }
   align-items: center;
 }
 .product-name {
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--slate-800);
   line-height: 1.4;
-  margin-bottom: 6px;
+  margin-bottom: 2px;
+  margin-top: 4px;
   flex: 1;
 }
 .product-price {
@@ -434,11 +435,13 @@ input, textarea { font-family: inherit; }
   height: 1.5px;
   background: var(--red);
   transform: rotate(-15deg);
+  
 }
 .sale-price {
   font-size: 20px;
   font-weight: 800;
-  color: var(--slate-800);
+  /* color: var(--slate-800); */
+  color: #00A6CC;
 }
 /* Buttons */
 .btn-add, .btn-sold {

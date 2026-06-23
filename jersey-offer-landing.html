@@ -690,16 +690,7 @@ input, textarea { font-family: inherit; }
   padding: 20px;
 }
 .modal-overlay.open { display: flex; }
-.modal-box {
-  background: var(--white);
-  border-radius: 16px;
-  padding: 24px;
-  width: 100%;
-  max-width: 400px;
-  max-height: 90vh;
-  overflow-y: auto;
-  animation: fadeUp 0.25s ease both;
-}
+/* modal-box defined above in variation section */
 .modal-header {
   display: flex;
   justify-content: space-between;
@@ -718,22 +709,108 @@ input, textarea { font-family: inherit; }
   display: flex; align-items: center; justify-content: center;
 }
 .modal-close:hover { background: var(--slate-200); }
-.variation-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 18px; }
+/* ── VARIATION MODAL GRID STYLE ── */
+.variation-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 18px;
+}
 .variation-item {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 13px 16px;
-  border: 1.5px solid var(--slate-200);
-  border-radius: 10px;
+  padding: 10px 8px 12px;
+  border: 2px solid var(--slate-200);
+  border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s;
+  background: var(--white);
+  text-align: center;
+  gap: 4px;
 }
-.variation-item:hover { border-color: var(--cyan); background: var(--cyan-light); }
+.variation-item:hover:not(.out) { border-color: var(--cyan); background: var(--cyan-light); }
+.variation-item.selected-var { border-color: var(--cyan); background: var(--cyan-light); }
 .variation-item.out { opacity: 0.45; cursor: not-allowed; }
-.var-name { font-size: 15px; font-weight: 700; color: var(--slate-800); }
-.var-stock-in { font-size: 12px; color: var(--green); font-weight: 600; }
-.var-stock-out { font-size: 12px; color: var(--red); font-weight: 600; }
+.var-card-img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 8px;
+  background: var(--slate-50);
+  margin-bottom: 4px;
+}
+.var-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--slate-800);
+  line-height: 1.2;
+}
+.var-prices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.var-reg-price {
+  font-size: 11px;
+  color: var(--slate-400);
+  font-weight: 400;
+  position: relative;
+  display: inline-block;
+}
+.var-reg-price::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: -3%; width: 106%; height: 1.5px;
+  background: var(--red);
+  transform: rotate(-12deg);
+}
+.var-sale-price {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--cyan);
+}
+.var-buy-btn {
+  width: 100%;
+  margin-top: 6px;
+  padding: 7px 4px;
+  background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: filter 0.2s;
+  font-family: inherit;
+}
+.var-buy-btn:hover { filter: brightness(1.1); }
+.var-sold-btn {
+  width: 100%;
+  margin-top: 6px;
+  padding: 7px 4px;
+  background: #cbd5e1;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: not-allowed;
+  font-family: inherit;
+}
+/* wider modal for grid */
+.modal-box {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: fadeUp 0.25s ease both;
+}
 .modal-order-btn {
   width: 100%;
   padding: 14px;
@@ -810,6 +887,7 @@ input, textarea { font-family: inherit; }
 @media (max-width: 400px) {
   .cd-box { width: 50px; height: 50px; }
   .cd-val { font-size: 18px; }
+  .variation-list { grid-template-columns: repeat(2, 1fr); }
 }
 </style>
 </head>
@@ -978,7 +1056,7 @@ input, textarea { font-family: inherit; }
           <span class="reg-price">৳1800</span>
           <span class="sale-price">৳1250</span>
         </div>
-        <button class="btn-add" onclick="openVariation(18608,'France Jersey (Premium) Player Edition - Thailand',1250,[{id:18609,name:'M',price:1250,in_stock:true},{id:18610,name:'L',price:1250,in_stock:true},{id:18611,name:'XL',price:1250,in_stock:false},{id:18612,name:'XXL',price:1250,in_stock:false}])">
+        <button class="btn-add" onclick="openVariation(18608,'France Jersey (Premium) Player Edition - Thailand',1250,[{id:18609,name:'M',price:1250,in_stock:true},{id:18610,name:'L',price:1250,in_stock:true},{id:18611,name:'XL',price:1250,in_stock:false},{id:18612,name:'XXL',price:1250,in_stock:false}],'https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_07_16-PM-300x300.png')">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           কিনুন
         </button>
@@ -1002,7 +1080,7 @@ input, textarea { font-family: inherit; }
           <span class="reg-price">৳1800</span>
           <span class="sale-price">৳1250</span>
         </div>
-        <button class="btn-add" onclick="openVariation(18597,'Portugal Jersey (Premium) Player Edition - Thailand',1250,[{id:18598,name:'M',price:1250,in_stock:true},{id:18599,name:'L',price:1250,in_stock:true},{id:18600,name:'XL',price:1250,in_stock:true},{id:18601,name:'XXL',price:1250,in_stock:true}])">
+        <button class="btn-add" onclick="openVariation(18597,'Portugal Jersey (Premium) Player Edition - Thailand',1250,[{id:18598,name:'M',price:1250,in_stock:true},{id:18599,name:'L',price:1250,in_stock:true},{id:18600,name:'XL',price:1250,in_stock:true},{id:18601,name:'XXL',price:1250,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_06_47-PM-300x300.png')">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           কিনুন
         </button>
@@ -1042,7 +1120,7 @@ input, textarea { font-family: inherit; }
           <span class="reg-price">৳1100</span>
           <span class="sale-price">৳715</span>
         </div>
-        <button class="btn-add" onclick="openVariation(17862,'Spain Master Edition Jersey',715,[{id:17863,name:'M',price:715,in_stock:false},{id:17864,name:'L',price:715,in_stock:true},{id:17865,name:'XL',price:715,in_stock:true},{id:17866,name:'XXL',price:715,in_stock:false}])">
+        <button class="btn-add" onclick="openVariation(17862,'Spain Master Edition Jersey',715,[{id:17863,name:'M',price:715,in_stock:false},{id:17864,name:'L',price:715,in_stock:true},{id:17865,name:'XL',price:715,in_stock:true},{id:17866,name:'XXL',price:715,in_stock:false}],'https://shop.prodhan.com/wp-content/uploads/2026/05/Spain-Master-Edition-Front-300x300.png')">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           কিনুন
         </button>
@@ -1066,7 +1144,7 @@ input, textarea { font-family: inherit; }
           <span class="reg-price">৳1100</span>
           <span class="sale-price">৳715</span>
         </div>
-        <button class="btn-add" onclick="openVariation(17852,'Brazil Master Edition Jersey',715,[{id:17853,name:'M',price:715,in_stock:false},{id:17854,name:'L',price:715,in_stock:true},{id:17855,name:'XL',price:715,in_stock:true},{id:17856,name:'XXL',price:715,in_stock:true}])">
+        <button class="btn-add" onclick="openVariation(17852,'Brazil Master Edition Jersey',715,[{id:17853,name:'M',price:715,in_stock:false},{id:17854,name:'L',price:715,in_stock:true},{id:17855,name:'XL',price:715,in_stock:true},{id:17856,name:'XXL',price:715,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-Master-Edition-Front-300x300.png')">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           কিনুন
         </button>
@@ -1090,7 +1168,7 @@ input, textarea { font-family: inherit; }
           <span class="reg-price">৳1100</span>
           <span class="sale-price">৳715</span>
         </div>
-        <button class="btn-add" onclick="openVariation(17716,'Argentina Master Edition Jersey',715,[{id:17717,name:'M',price:715,in_stock:false},{id:17718,name:'L',price:715,in_stock:true},{id:17719,name:'XL',price:715,in_stock:true},{id:17720,name:'XXL',price:715,in_stock:true}])">
+        <button class="btn-add" onclick="openVariation(17716,'Argentina Master Edition Jersey',715,[{id:17717,name:'M',price:715,in_stock:false},{id:17718,name:'L',price:715,in_stock:true},{id:17719,name:'XL',price:715,in_stock:true},{id:17720,name:'XXL',price:715,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-11-2026-07_29_39-PM-300x300.png')">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           কিনুন
         </button>
@@ -1114,7 +1192,7 @@ input, textarea { font-family: inherit; }
           <span class="reg-price">৳3600</span>
           <span class="sale-price">৳2500</span>
         </div>
-        <button class="btn-add" onclick="openVariation(17147,'Arg+Arg (Premium) Player Edition Combo - Thailand',2500,[{id:17148,name:'M',price:2500,in_stock:true},{id:17149,name:'L',price:2500,in_stock:true},{id:17150,name:'XL',price:2500,in_stock:true},{id:17151,name:'2XL',price:2500,in_stock:true}])">
+        <button class="btn-add" onclick="openVariation(17147,'Arg+Arg (Premium) Player Edition Combo - Thailand',2500,[{id:17148,name:'M',price:2500,in_stock:true},{id:17149,name:'L',price:2500,in_stock:true},{id:17150,name:'XL',price:2500,in_stock:true},{id:17151,name:'2XL',price:2500,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg')">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           কিনুন
         </button>
@@ -1138,7 +1216,7 @@ input, textarea { font-family: inherit; }
           <span class="reg-price">৳3600</span>
           <span class="sale-price">৳2500</span>
         </div>
-        <button class="btn-add" onclick="openVariation(17141,'Br+Br (Premium) Player Edition Combo - Thailand',2500,[{id:17142,name:'M',price:2500,in_stock:true},{id:17143,name:'L',price:2500,in_stock:true},{id:17144,name:'XL',price:2500,in_stock:true},{id:17145,name:'2XL',price:2500,in_stock:true}])">
+        <button class="btn-add" onclick="openVariation(17141,'Br+Br (Premium) Player Edition Combo - Thailand',2500,[{id:17142,name:'M',price:2500,in_stock:true},{id:17143,name:'L',price:2500,in_stock:true},{id:17144,name:'XL',price:2500,in_stock:true},{id:17145,name:'2XL',price:2500,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/\u098f\u0987_\u099c\u09be\u09b0\u09cd\u09b8\u09bf_\u099f\u09be\u0995\u09c7_\u09e8\u099f\u09be\u09b0_\u0995\u09ae\u09cd\u09ac\u09cb_202605071557-300x300.jpeg')">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           কিনুন
         </button>
@@ -1162,7 +1240,7 @@ input, textarea { font-family: inherit; }
           <span class="reg-price">৳3600</span>
           <span class="sale-price">৳2500</span>
         </div>
-        <button class="btn-add" onclick="openVariation(17129,'Arg+Br (Premium) Player Edition Combo - Thailand',2500,[{id:17130,name:'M',price:2500,in_stock:true},{id:17131,name:'L',price:2500,in_stock:true},{id:17132,name:'XL',price:2500,in_stock:true},{id:17133,name:'2XL',price:2500,in_stock:true}])">
+        <button class="btn-add" onclick="openVariation(17129,'Arg+Br (Premium) Player Edition Combo - Thailand',2500,[{id:17130,name:'M',price:2500,in_stock:true},{id:17131,name:'L',price:2500,in_stock:true},{id:17132,name:'XL',price:2500,in_stock:true},{id:17133,name:'2XL',price:2500,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/\u098f\u0987_\u09e8_\u099f\u09be_\u099c\u09be\u09b0\u09cd\u09b8\u09bf_\u098f\u0995\u09a4\u09cd\u09b0_202605071557-300x300.jpeg')">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           কিনুন
         </button>
@@ -1186,7 +1264,7 @@ input, textarea { font-family: inherit; }
           <span class="reg-price">৳1800</span>
           <span class="sale-price">৳1250</span>
         </div>
-        <button class="btn-add" onclick="openVariation(17003,'Brazil Jersey (Premium) Player Edition - Thailand',1250,[{id:17004,name:'M',price:1250,in_stock:true},{id:17005,name:'L',price:1250,in_stock:true},{id:17006,name:'XL',price:1250,in_stock:true},{id:17007,name:'2XL',price:1250,in_stock:false}])">
+        <button class="btn-add" onclick="openVariation(17003,'Brazil Jersey (Premium) Player Edition - Thailand',1250,[{id:17004,name:'M',price:1250,in_stock:true},{id:17005,name:'L',price:1250,in_stock:true},{id:17006,name:'XL',price:1250,in_stock:true},{id:17007,name:'2XL',price:1250,in_stock:false}],'https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-300x300.jpeg')">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           কিনুন
         </button>
@@ -1210,7 +1288,7 @@ input, textarea { font-family: inherit; }
           <span class="reg-price">৳1800</span>
           <span class="sale-price">৳1250</span>
         </div>
-        <button class="btn-add" onclick="openVariation(16995,'Argentine Jersey (Premium) Player Edition - Thailand',1250,[{id:16998,name:'M',price:1250,in_stock:false},{id:16999,name:'L',price:1250,in_stock:true},{id:17000,name:'XL',price:1250,in_stock:true},{id:17001,name:'2XL',price:1250,in_stock:true}])">
+        <button class="btn-add" onclick="openVariation(16995,'Argentine Jersey (Premium) Player Edition - Thailand',1250,[{id:16998,name:'M',price:1250,in_stock:false},{id:16999,name:'L',price:1250,in_stock:true},{id:17000,name:'XL',price:1250,in_stock:true},{id:17001,name:'2XL',price:1250,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg')">
           <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
           কিনুন
         </button>
@@ -1442,20 +1520,58 @@ function updateQtyDisplay(id, qty) {
 }
 
 /* ── VARIATION MODAL ── */
-function openVariation(parentId, name, price, variants) {
-  pendingVariation = { parentId, name, price, variants };
+// regPriceMap: parentId -> regular price (from product card)
+const regPriceMap = {
+  18608: 1800, 18597: 1800,
+  17862: 1100, 17852: 1100, 17716: 1100,
+  17147: 3600, 17141: 3600, 17129: 3600,
+  17003: 1800, 16995: 1800
+};
+
+function openVariation(parentId, name, price, variants, img) {
+  pendingVariation = { parentId, name, price, variants, img };
   selectedVariantId = null;
+
+  const regPrice = regPriceMap[parentId] || Math.round(price * 1.45);
 
   const list = document.getElementById('variation-list');
   list.innerHTML = variants.map(v => `
-    <div class="variation-item ${!v.in_stock ? 'out' : ''}"
-         onclick="${v.in_stock ? `selectVariant(${v.id},'${v.name}',${v.price},${parentId}, this)` : ''}">
+    <div class="variation-item ${!v.in_stock ? 'out' : ''}" id="var-card-${v.id}">
+      <img class="var-card-img" src="${img || ''}" alt="${v.name}" onerror="this.style.display='none'">
       <span class="var-name">${v.name}</span>
-      <span class="${v.in_stock ? 'var-stock-in' : 'var-stock-out'}">${v.in_stock ? '✓ In Stock' : '✗ Stock Out'}</span>
+      <div class="var-prices">
+        <span class="var-reg-price">৳${regPrice.toLocaleString()}</span>
+        <span class="var-sale-price">৳${v.price.toLocaleString()}</span>
+      </div>
+      ${v.in_stock
+        ? `<button class="var-buy-btn" onclick="quickAddVariant(${v.id},'${v.name}',${v.price},${parentId})">কিনুন</button>`
+        : `<button class="var-sold-btn" disabled>স্টক আউট</button>`
+      }
     </div>
   `).join('');
 
   document.getElementById('variation-modal').classList.add('open');
+}
+
+function quickAddVariant(varId, varName, price, parentId) {
+  const key = 'var_' + varId;
+  const fullName = pendingVariation.name + ' - ' + varName;
+
+  if (cart[key]) {
+    cart[key].qty++;
+  } else {
+    cart[key] = { name: fullName, price, qty: 1, _parentId: parentId };
+  }
+
+  const qEl = document.getElementById('qty-' + parentId);
+  if (qEl) {
+    qEl.classList.add('visible');
+    const totalQty = Object.values(cart).filter(c => c._parentId == parentId).reduce((a, c) => a + c.qty, 0);
+    updateQtyDisplay(parentId, totalQty);
+  }
+
+  closeModal('variation-modal');
+  refreshSummary();
 }
 
 function selectVariant(varId, varName, price, parentId, el) {
@@ -1471,25 +1587,7 @@ function confirmVariation() {
     return;
   }
   const { varId, varName, price, parentId } = selectedVariantId;
-  const key = 'var_' + varId;
-  const fullName = pendingVariation.name + ' - ' + varName;
-
-  if (cart[key]) {
-    cart[key].qty++;
-  } else {
-    cart[key] = { name: fullName, price, qty: 1, _parentId: parentId };
-  }
-
-  const qEl = document.getElementById('qty-' + parentId);
-  if (qEl) {
-    qEl.classList.add('visible');
-    // sum all variants of same parent
-    const totalQty = Object.values(cart).filter(c => c._parentId == parentId).reduce((a,c) => a + c.qty, 0);
-    updateQtyDisplay(parentId, totalQty);
-  }
-
-  closeModal('variation-modal');
-  refreshSummary();
+  quickAddVariant(varId, varName, price, parentId);
 }
 
 function closeModal(id) {

@@ -1582,7 +1582,6 @@ input, textarea { font-family: inherit; }
     </div>
     <div id="lb-dots" class="lb-dots"></div>
     <div class="lightbox-info">
-      <div class="lb-side-label" id="lb-side-label" style="display:none"></div>
       <div class="lightbox-name" id="lb-name"></div>
       <div class="lightbox-prices">
         <span class="lb-reg" id="lb-reg"></span>
@@ -1881,7 +1880,9 @@ const lbData = [
     groups: [
       { label: null, imgs: [
         BASE + 'ChatGPT-Image-May-17-2026-03_07_16-PM-300x300.png',
-        BASE + 'ChatGPT-Image-May-17-2026-03_07_16-PM-1-300x300.png',
+        BASE + 'ChatGPT-Image-May-17-2026-03_07_17-PM.png',
+        BASE + 'ChatGPT-Image-May-17-2026-03_07_27-PM.png',
+        BASE + 'ChatGPT-Image-May-17-2026-03_07_30-PM.png',
       ]}
     ]
   },
@@ -2020,9 +2021,7 @@ function buildSlides(p) {
   p.groups.forEach(g => {
     g.imgs.forEach((url, i) => {
       slides.push({
-        groupLabel: g.label,
         url,
-        side: i === 0 ? 'সামনে (Front)' : 'পেছনে (Back)',
         groupIdx: p.groups.indexOf(g),
         isFirstInGroup: i === 0,
       });
@@ -2075,20 +2074,6 @@ function renderLb() {
   document.getElementById('lb-name').textContent = p.name;
   document.getElementById('lb-reg').textContent = p.reg;
   document.getElementById('lb-sale').textContent = p.sale;
-
-  /* side label */
-  const sideEl = document.getElementById('lb-side-label');
-  if (sideEl) {
-    if (isCombo && slide.groupLabel) {
-      sideEl.textContent = slide.groupLabel + ' — ' + slide.side;
-      sideEl.style.display = 'block';
-    } else if (!isCombo) {
-      sideEl.textContent = slide.side;
-      sideEl.style.display = 'block';
-    } else {
-      sideEl.style.display = 'none';
-    }
-  }
 
   /* counter */
   document.getElementById('lb-counter').textContent = (lbImgIdx + 1) + ' / ' + total;

@@ -690,6 +690,7 @@ input, textarea { font-family: inherit; }
   padding: 20px;
 }
 .modal-overlay.open { display: flex; }
+/* lb-dots styles defined in lightbox section below */
 /* modal-box defined above in variation section */
 .modal-header {
   display: flex;
@@ -889,6 +890,161 @@ input, textarea { font-family: inherit; }
   .cd-val { font-size: 18px; }
   .variation-list { grid-template-columns: repeat(2, 1fr); }
 }
+/* ─────────────────────────────────────────
+   IMAGE LIGHTBOX / SLIDER  (modal-card style)
+───────────────────────────────────────── */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.60);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.lightbox-overlay.open { display: flex; }
+
+/* White card wrapper */
+.lightbox-card {
+  background: #fff;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 380px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 0 0 20px;
+  position: relative;
+  animation: lbFade 0.25s ease both;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 12px; right: 14px;
+  width: 30px; height: 30px;
+  background: rgba(0,0,0,0.08);
+  border: none;
+  border-radius: 50%;
+  color: #475569;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  z-index: 10;
+}
+.lightbox-close:hover { background: rgba(0,0,0,0.15); }
+
+.lightbox-img-wrap {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  border-radius: 20px 20px 0 0;
+  overflow: hidden;
+}
+.lightbox-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  animation: lbFade 0.25s ease both;
+}
+@keyframes lbFade {
+  from { opacity: 0; transform: scale(0.96); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.lightbox-info {
+  text-align: center;
+  color: var(--slate-800);
+  margin: 14px 16px 8px;
+}
+.lightbox-name {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  line-height: 1.4;
+  color: var(--slate-800);
+}
+.lightbox-prices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.lb-reg { font-size: 14px; color: #94a3b8; text-decoration: line-through; }
+.lb-sale { font-size: 22px; font-weight: 800; color: var(--cyan); }
+
+.lightbox-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 10px;
+}
+.lb-arrow {
+  width: 38px; height: 38px;
+  background: var(--slate-100);
+  border: none;
+  border-radius: 50%;
+  color: var(--slate-800);
+  font-size: 22px;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.lb-arrow:hover { background: var(--slate-200); }
+.lb-counter {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--slate-400);
+  min-width: 44px;
+  text-align: center;
+}
+
+/* side label (Front / Back / jersey group) */
+.lb-side-label {
+  display: inline-block;
+  background: var(--cyan-light);
+  color: var(--cyan-dark);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+/* dot separator between combo groups */
+.lb-dot-sep {
+  color: var(--slate-300);
+  font-size: 12px;
+  line-height: 7px;
+  margin: 0 2px;
+  align-self: center;
+}
+
+/* dots inside card */
+.lb-dots {
+  display: flex;
+  gap: 7px;
+  justify-content: center;
+  margin: 10px 0 4px;
+}
+.lb-dot {
+  width: 7px; height: 7px;
+  background: var(--slate-200);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.lb-dot.active {
+  background: var(--cyan);
+  transform: scale(1.3);
+}
+.lb-dot:hover { background: var(--slate-400); }
 </style>
 </head>
 <body>
@@ -1022,7 +1178,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 1: Ball -->
     <div class="product-card" style="animation-delay:0.1s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(0)" style="cursor:zoom-in">
         <span class="discount-badge">-36%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_06_00-PM-300x300.png" alt="Trionda FIFA World Cup Ball">
       </div>
@@ -1046,7 +1202,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 2: France Jersey -->
     <div class="product-card" style="animation-delay:0.15s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(1)" style="cursor:zoom-in">
         <span class="discount-badge">-31%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_07_16-PM-300x300.png" alt="France Jersey">
       </div>
@@ -1070,7 +1226,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 3: Portugal Player Edition -->
     <div class="product-card" style="animation-delay:0.2s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(2)" style="cursor:zoom-in">
         <span class="discount-badge">-31%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_06_47-PM-300x300.png" alt="Portugal Jersey">
       </div>
@@ -1094,7 +1250,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 4: Portugal Master (stock out) -->
     <div class="product-card" style="animation-delay:0.25s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(3)" style="cursor:zoom-in">
         <span class="discount-badge">-35%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Front-Portugal-Master-Edition-300x300.png" alt="Portugal Master Edition">
       </div>
@@ -1110,7 +1266,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 5: Spain Master -->
     <div class="product-card" style="animation-delay:0.3s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(4)" style="cursor:zoom-in">
         <span class="discount-badge">-35%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Spain-Master-Edition-Front-300x300.png" alt="Spain Master Edition">
       </div>
@@ -1134,7 +1290,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 6: Brazil Master -->
     <div class="product-card" style="animation-delay:0.35s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(5)" style="cursor:zoom-in">
         <span class="discount-badge">-35%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-Master-Edition-Front-300x300.png" alt="Brazil Master Edition">
       </div>
@@ -1158,7 +1314,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 7: Argentina Master -->
     <div class="product-card" style="animation-delay:0.4s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(6)" style="cursor:zoom-in">
         <span class="discount-badge">-35%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-11-2026-07_29_39-PM-300x300.png" alt="Argentina Master Edition">
       </div>
@@ -1182,7 +1338,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 8: Arg+Arg Combo -->
     <div class="product-card" style="animation-delay:0.45s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(7)" style="cursor:zoom-in">
         <span class="discount-badge">-31%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg" alt="Arg+Arg Combo">
       </div>
@@ -1206,7 +1362,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 9: Br+Br Combo -->
     <div class="product-card" style="animation-delay:0.5s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(8)" style="cursor:zoom-in">
         <span class="discount-badge">-31%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/এই_জার্সি_টাকে_২টার_কম্বো_202605071557-300x300.jpeg" alt="Br+Br Combo">
       </div>
@@ -1230,7 +1386,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 10: Arg+Br Combo -->
     <div class="product-card" style="animation-delay:0.55s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(9)" style="cursor:zoom-in">
         <span class="discount-badge">-31%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/এই_২_টা_জার্সি_একত্র_202605071557-300x300.jpeg" alt="Arg+Br Combo">
       </div>
@@ -1254,7 +1410,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 11: Brazil Player Edition -->
     <div class="product-card" style="animation-delay:0.6s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(10)" style="cursor:zoom-in">
         <span class="discount-badge">-31%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-300x300.jpeg" alt="Brazil Player Edition">
       </div>
@@ -1278,7 +1434,7 @@ input, textarea { font-family: inherit; }
 
     <!-- Product 12: Argentine Player Edition -->
     <div class="product-card" style="animation-delay:0.65s">
-      <div class="product-img-wrap">
+      <div class="product-img-wrap" onclick="openLightbox(11)" style="cursor:zoom-in">
         <span class="discount-badge">-31%</span>
         <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg" alt="Argentine Player Edition">
       </div>
@@ -1412,6 +1568,32 @@ input, textarea { font-family: inherit; }
     <h3>অর্ডার সফল হয়েছে!</h3>
     <p style="margin-top:8px;">আপনার অর্ডারটি গ্রহণ করা হয়েছে। শীঘ্রই আমাদের টিম আপনার সাথে যোগাযোগ করবে।</p>
     <button class="btn-add" style="margin-top:20px;padding:12px;" onclick="closeModal('success-modal')">ঠিক আছে</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     IMAGE LIGHTBOX
+══════════════════════════════════════ -->
+<div class="lightbox-overlay" id="lightbox" onclick="lbOverlayClick(event)">
+  <div class="lightbox-card">
+    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+    <div class="lightbox-img-wrap">
+      <img id="lb-img" src="" alt="">
+    </div>
+    <div id="lb-dots" class="lb-dots"></div>
+    <div class="lightbox-info">
+      <div class="lb-side-label" id="lb-side-label" style="display:none"></div>
+      <div class="lightbox-name" id="lb-name"></div>
+      <div class="lightbox-prices">
+        <span class="lb-reg" id="lb-reg"></span>
+        <span class="lb-sale" id="lb-sale"></span>
+      </div>
+    </div>
+    <div class="lightbox-nav" id="lb-nav">
+      <button class="lb-arrow" onclick="lbMove(-1)">&#8249;</button>
+      <span class="lb-counter" id="lb-counter">1 / 1</span>
+      <button class="lb-arrow" onclick="lbMove(1)">&#8250;</button>
+    </div>
   </div>
 </div>
 
@@ -1668,6 +1850,312 @@ window.addEventListener('DOMContentLoaded', () => {
   const qEl = document.getElementById('qty-16995');
   if (qEl) { qEl.classList.add('visible'); updateQtyDisplay(16995, 1); }
   refreshSummary();
+});
+/* ── LIGHTBOX ── */
+const BASE = 'https://shop.prodhan.com/wp-content/uploads/2026/05/';
+
+/*
+  lbData structure:
+  - Single jersey  → groups: [ { label: null,      imgs: [front, back] } ]
+  - Combo          → groups: [ { label: 'Jersey ১', imgs: [front, back] },
+                                { label: 'Jersey ২', imgs: [front, back] } ]
+  Each group shows front then back, one at a time.
+  Between groups, a divider/label shows which jersey is up next.
+*/
+const lbData = [
+  /* 0 – Ball (not a jersey, treat as single with 2 imgs) */
+  {
+    name: 'Trionda FIFA World Cup Ball',
+    reg: '৳1700', sale: '৳1090',
+    groups: [
+      { label: null, imgs: [
+        BASE + 'ChatGPT-Image-May-17-2026-03_06_00-PM-300x300.png',
+        BASE + 'ChatGPT-Image-May-17-2026-03_06_00-PM-1-300x300.png',
+      ]}
+    ]
+  },
+  /* 1 – France single */
+  {
+    name: 'France Jersey (Premium) Player Edition - Thailand',
+    reg: '৳1800', sale: '৳1250',
+    groups: [
+      { label: null, imgs: [
+        BASE + 'ChatGPT-Image-May-17-2026-03_07_16-PM-300x300.png',
+        BASE + 'ChatGPT-Image-May-17-2026-03_07_16-PM-1-300x300.png',
+      ]}
+    ]
+  },
+  /* 2 – Portugal Player Edition single */
+  {
+    name: 'Portugal Jersey (Premium) Player Edition - Thailand',
+    reg: '৳1800', sale: '৳1250',
+    groups: [
+      { label: null, imgs: [
+        BASE + 'ChatGPT-Image-May-17-2026-03_06_47-PM-300x300.png',
+        BASE + 'ChatGPT-Image-May-17-2026-03_06_47-PM-1-300x300.png',
+      ]}
+    ]
+  },
+  /* 3 – Portugal Master single */
+  {
+    name: 'Portugal Master Edition Jersey',
+    reg: '৳1100', sale: '৳715',
+    groups: [
+      { label: null, imgs: [
+        BASE + 'Front-Portugal-Master-Edition-300x300.png',
+        BASE + 'Back-Portugal-Master-Edition-300x300.png',
+      ]}
+    ]
+  },
+  /* 4 – Spain Master single */
+  {
+    name: 'Spain Master Edition Jersey',
+    reg: '৳1100', sale: '৳715',
+    groups: [
+      { label: null, imgs: [
+        BASE + 'Spain-Master-Edition-Front-300x300.png',
+        BASE + 'Spain-Master-Edition-Back-300x300.png',
+      ]}
+    ]
+  },
+  /* 5 – Brazil Master single */
+  {
+    name: 'Brazil Master Edition Jersey',
+    reg: '৳1100', sale: '৳715',
+    groups: [
+      { label: null, imgs: [
+        BASE + 'Brazil-Master-Edition-Front-300x300.png',
+        BASE + 'Brazil-Master-Edition-Back-300x300.png',
+      ]}
+    ]
+  },
+  /* 6 – Argentina Master single */
+  {
+    name: 'Argentina Master Edition Jersey',
+    reg: '৳1100', sale: '৳715',
+    groups: [
+      { label: null, imgs: [
+        BASE + 'ChatGPT-Image-May-11-2026-07_29_39-PM-300x300.png',
+        BASE + 'ChatGPT-Image-May-11-2026-07_29_39-PM-1-300x300.png',
+      ]}
+    ]
+  },
+  /* 7 – Arg+Arg Combo */
+  {
+    name: 'Arg+Arg (Premium) Player Edition Combo - Thailand',
+    reg: '৳3600', sale: '৳2500',
+    groups: [
+      { label: 'জার্সি ১ – Argentina', imgs: [
+        BASE + 'এই_জার্সি_টাকে_২টার_কম্বো_202605071556-1-300x300.jpeg',
+        BASE + 'Argentina-Solid-Back-300x300.jpeg',
+      ]},
+      { label: 'জার্সি ২ – Argentina', imgs: [
+        BASE + 'Argentina-Solid-300x300.jpeg',
+        BASE + 'এই_জার্সি_টাকে_২টার_কম্বো_202605071556-2-300x300.jpeg',
+      ]}
+    ]
+  },
+  /* 8 – Br+Br Combo */
+  {
+    name: 'Br+Br (Premium) Player Edition Combo - Thailand',
+    reg: '৳3600', sale: '৳2500',
+    groups: [
+      { label: 'জার্সি ১ – Brazil', imgs: [
+        BASE + 'এই_জার্সি_টাকে_২টার_কম্বো_202605071557-300x300.jpeg',
+        BASE + 'Brazil-Back-300x300.jpeg',
+      ]},
+      { label: 'জার্সি ২ – Brazil', imgs: [
+        BASE + 'Brazil-300x300.jpeg',
+        BASE + 'এই_জার্সি_টাকে_২টার_কম্বো_202605071557-1-300x300.jpeg',
+      ]}
+    ]
+  },
+  /* 9 – Arg+Br Combo */
+  {
+    name: 'Arg+Br (Premium) Player Edition Combo - Thailand',
+    reg: '৳3600', sale: '৳2500',
+    groups: [
+      { label: 'জার্সি ১ – Argentina', imgs: [
+        BASE + 'Argentina-Solid-300x300.jpeg',
+        BASE + 'Argentina-Solid-Back-300x300.jpeg',
+      ]},
+      { label: 'জার্সি ২ – Brazil', imgs: [
+        BASE + 'Brazil-300x300.jpeg',
+        BASE + 'Brazil-Back-300x300.jpeg',
+      ]}
+    ]
+  },
+  /* 10 – Brazil Player Edition single */
+  {
+    name: 'Brazil Jersey (Premium) Player Edition - Thailand',
+    reg: '৳1800', sale: '৳1250',
+    groups: [
+      { label: null, imgs: [
+        BASE + 'Brazil-300x300.jpeg',
+        BASE + 'Brazil-Back-300x300.jpeg',
+      ]}
+    ]
+  },
+  /* 11 – Argentine Player Edition single */
+  {
+    name: 'Argentine Jersey (Premium) Player Edition - Thailand',
+    reg: '৳1800', sale: '৳1250',
+    groups: [
+      { label: null, imgs: [
+        BASE + 'Argentina-Solid-300x300.jpeg',
+        BASE + 'Argentina-Solid-Back-300x300.jpeg',
+      ]}
+    ]
+  },
+];
+
+/* ── Lightbox state ── */
+let lbProductIdx = 0;
+let lbGroupIdx   = 0;   // which jersey group (for combo)
+let lbImgIdx     = 0;   // which image within group (0=front,1=back)
+
+/* Flatten groups into a slide list: [{groupLabel, url, side}, ...] */
+function buildSlides(p) {
+  const slides = [];
+  p.groups.forEach(g => {
+    g.imgs.forEach((url, i) => {
+      slides.push({
+        groupLabel: g.label,
+        url,
+        side: i === 0 ? 'সামনে (Front)' : 'পেছনে (Back)',
+        groupIdx: p.groups.indexOf(g),
+        isFirstInGroup: i === 0,
+      });
+    });
+  });
+  return slides;
+}
+
+let lbSlides = [];
+
+function openLightbox(productIdx) {
+  lbProductIdx = productIdx;
+  lbImgIdx = 0;
+  const p = lbData[productIdx];
+  lbSlides = buildSlides(p);
+
+  document.getElementById('lb-img').src = lbSlides[0].url;
+  document.getElementById('lb-name').textContent = p.name;
+  document.getElementById('lb-reg').textContent = p.reg;
+  document.getElementById('lb-sale').textContent = p.sale;
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderLb();
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function lbOverlayClick(e) {
+  if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+function renderLb() {
+  const p = lbData[lbProductIdx];
+  const slide = lbSlides[lbImgIdx];
+  const total = lbSlides.length;
+  const isCombo = p.groups.length > 1;
+
+  /* image */
+  const imgEl = document.getElementById('lb-img');
+  imgEl.style.animation = 'none';
+  imgEl.offsetHeight;
+  imgEl.style.animation = '';
+  imgEl.src = slide.url;
+  imgEl.alt = p.name;
+
+  /* name & price */
+  document.getElementById('lb-name').textContent = p.name;
+  document.getElementById('lb-reg').textContent = p.reg;
+  document.getElementById('lb-sale').textContent = p.sale;
+
+  /* side label */
+  const sideEl = document.getElementById('lb-side-label');
+  if (sideEl) {
+    if (isCombo && slide.groupLabel) {
+      sideEl.textContent = slide.groupLabel + ' — ' + slide.side;
+      sideEl.style.display = 'block';
+    } else if (!isCombo) {
+      sideEl.textContent = slide.side;
+      sideEl.style.display = 'block';
+    } else {
+      sideEl.style.display = 'none';
+    }
+  }
+
+  /* counter */
+  document.getElementById('lb-counter').textContent = (lbImgIdx + 1) + ' / ' + total;
+
+  /* dots */
+  renderDots(total);
+
+  /* arrows */
+  const arrows = document.querySelectorAll('.lb-arrow');
+  arrows.forEach(a => a.style.visibility = total > 1 ? 'visible' : 'hidden');
+  document.getElementById('lb-nav').style.display = total > 1 ? 'flex' : 'none';
+}
+
+function renderDots(total) {
+  const dotsEl = document.getElementById('lb-dots');
+  if (!dotsEl) return;
+  const p = lbData[lbProductIdx];
+  const isCombo = p.groups.length > 1;
+
+  if (total <= 1) { dotsEl.innerHTML = ''; return; }
+
+  /* for combo: show group separators between dots */
+  if (isCombo) {
+    let html = '';
+    let lastGroup = -1;
+    lbSlides.forEach((s, i) => {
+      if (s.groupIdx !== lastGroup) {
+        if (lastGroup !== -1) html += '<span class="lb-dot-sep">|</span>';
+        lastGroup = s.groupIdx;
+      }
+      html += `<span class="lb-dot ${i === lbImgIdx ? 'active' : ''}" onclick="lbGoTo(${i})"></span>`;
+    });
+    dotsEl.innerHTML = html;
+  } else {
+    dotsEl.innerHTML = lbSlides.map((_, i) =>
+      `<span class="lb-dot ${i === lbImgIdx ? 'active' : ''}" onclick="lbGoTo(${i})"></span>`
+    ).join('');
+  }
+}
+
+function lbGoTo(i) {
+  lbImgIdx = i;
+  renderLb();
+}
+
+function lbMove(dir) {
+  lbImgIdx = (lbImgIdx + dir + lbSlides.length) % lbSlides.length;
+  renderLb();
+}
+
+// Touch/swipe support
+let lbTouchStartX = 0;
+document.getElementById('lightbox') && document.getElementById('lightbox').addEventListener('touchstart', e => {
+  lbTouchStartX = e.touches[0].clientX;
+}, { passive: true });
+document.addEventListener('touchend', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  const diff = e.changedTouches[0].clientX - lbTouchStartX;
+  if (Math.abs(diff) > 50) lbMove(diff < 0 ? 1 : -1);
+});
+
+// Keyboard support
+document.addEventListener('keydown', e => {
+  if (!document.getElementById('lightbox').classList.contains('open')) return;
+  if (e.key === 'ArrowRight') lbMove(1);
+  if (e.key === 'ArrowLeft') lbMove(-1);
+  if (e.key === 'Escape') closeLightbox();
 });
 </script>
 

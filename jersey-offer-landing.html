@@ -1056,34 +1056,196 @@
       }
 
       /* ─────────────────────────────────────────
-   SUCCESS MODAL
+   ORDER CONFIRMATION MODAL  (no-scroll, compact)
 ───────────────────────────────────────── */
-      .success-modal .modal-box {
-        text-align: center;
-        max-width: 360px;
-      }
-      .success-icon {
-        width: 64px;
-        height: 64px;
-        background: #dcfce7;
-        color: var(--green);
-        border-radius: 50%;
-        display: inline-flex;
+      .order-confirm-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.55);
+        z-index: 3000;
         align-items: center;
         justify-content: center;
-        font-size: 30px;
-        margin: 0 auto 16px;
+        padding: 12px;
+        backdrop-filter: blur(3px);
       }
-      .success-modal h3 {
-        font-size: 22px;
-        font-weight: 800;
-        margin-bottom: 10px;
+      .order-confirm-overlay.open { display: flex; }
+
+      .order-confirm-card {
+        background: #fff;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 430px;
+        overflow: hidden;           /* no scroll ever */
+        animation: ocFadeUp 0.32s cubic-bezier(0.34,1.4,0.64,1) both;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.28);
       }
-      .success-modal p {
-        font-size: 15px;
-        color: var(--slate-600);
-        line-height: 1.6;
+      @keyframes ocFadeUp {
+        from { opacity: 0; transform: translateY(24px) scale(0.95); }
+        to   { opacity: 1; transform: translateY(0) scale(1); }
       }
+
+      /* ── Header strip ── */
+      .oc-header {
+        background: #fff;
+        padding: 22px 20px 16px;
+        text-align: center;
+        border-bottom: 1px solid #f0f4f8;
+      }
+      .oc-success-ring {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #10b981, #059669);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px;
+        box-shadow: 0 4px 14px rgba(16,185,129,0.35);
+        animation: ocPop 0.45s 0.15s cubic-bezier(0.34,1.56,0.64,1) both;
+      }
+      @keyframes ocPop {
+        from { transform: scale(0); opacity: 0; }
+        to   { transform: scale(1); opacity: 1; }
+      }
+      .oc-success-ring svg {
+        width: 28px; height: 28px;
+        stroke: #fff; stroke-width: 3; fill: none;
+      }
+      .oc-title {
+        font-size: 17px; font-weight: 800; color: #1e293b; margin-bottom: 3px;
+      }
+      .oc-subtitle {
+        font-size: 12.5px; color: #64748b; line-height: 1.4;
+      }
+
+      /* ── Order ID + status row ── */
+      .oc-id-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 10px;
+        padding: 10px 14px;
+        margin: 12px 0 0;
+        text-align: left;
+      }
+      .oc-id-label {
+        font-size: 11px; color: #00a6cc; font-weight: 700;
+        text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 3px;
+      }
+      .oc-id-val {
+        font-size: 18px; font-weight: 900; color: #1e293b;
+        display: flex; align-items: center; gap: 7px;
+      }
+      .oc-copy-btn {
+        background: #e0f7ff; border: none; border-radius: 7px;
+        padding: 4px 10px; font-size: 11px; font-weight: 700;
+        color: #00a6cc; cursor: pointer; display: flex; align-items: center;
+        gap: 3px; transition: background 0.2s; white-space: nowrap;
+        font-family: inherit;
+      }
+      .oc-copy-btn:hover { background: #bae6fd; }
+      .oc-status-badge {
+        font-size: 12px; font-weight: 700; padding: 4px 12px;
+        border-radius: 20px; background: #fef3c7; color: #d97706;
+        border: 1px solid #fde68a; white-space: nowrap;
+      }
+      .oc-status-col { text-align: right; }
+      .oc-status-label { font-size: 11px; color: #94a3b8; font-weight: 600; margin-bottom: 4px; }
+
+      /* ── Gray body wrapper ── */
+      .oc-body {
+        background: #f4f6f9;
+        padding: 12px 14px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      /* ── White cards ── */
+      .oc-section {
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #e9ecf0;
+      }
+      .oc-section-head {
+        font-size: 13px; font-weight: 800; color: #1e293b;
+        padding: 10px 14px 8px;
+        border-bottom: 1px solid #f1f5f9;
+      }
+
+      /* Customer info: all inline, 3 columns */
+      .oc-info-row {
+        display: flex;
+        gap: 0;
+      }
+      .oc-info-cell {
+        flex: 1;
+        padding: 9px 14px;
+        border-right: 1px solid #f1f5f9;
+      }
+      .oc-info-cell:last-child { border-right: none; }
+      .oc-info-key {
+        font-size: 11px; color: #00a6cc; font-weight: 700; margin-bottom: 2px;
+      }
+      .oc-info-val {
+        font-size: 13px; font-weight: 700; color: #1e293b;
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      }
+      .oc-addr-cell {
+        padding: 9px 14px;
+        border-top: 1px solid #f1f5f9;
+      }
+
+      /* Order items */
+      .oc-item-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 14px;
+        border-bottom: 1px solid #f1f5f9;
+        gap: 8px;
+      }
+      .oc-item-row:last-child { border-bottom: none; }
+      .oc-item-name {
+        font-size: 12.5px; font-weight: 600; color: #1e293b;
+        flex: 1; line-height: 1.35;
+      }
+      .oc-item-name span { color: #ef4444; font-weight: 700; }
+      .oc-item-price {
+        font-size: 13px; font-weight: 700; color: #1e293b; white-space: nowrap;
+      }
+      .oc-del-row {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 8px 14px; border-bottom: 1px solid #f1f5f9;
+      }
+      .oc-del-label { font-size: 12.5px; color: #00a6cc; font-weight: 600; }
+      .oc-del-val   { font-size: 13px; font-weight: 700; color: #475569; }
+      .oc-total-row {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 11px 14px;
+      }
+      .oc-total-label { font-size: 15px; font-weight: 800; color: #1e293b; }
+      .oc-total-val   { font-size: 20px; font-weight: 900; color: #f59e0b; }
+      .oc-date-line {
+        text-align: center; font-size: 11px; color: #94a3b8;
+        padding: 4px 14px 10px;
+      }
+
+      /* ── Close button ── */
+      .oc-close-btn {
+        display: flex; align-items: center; justify-content: center; gap: 7px;
+        width: 100%; margin: 0;
+        padding: 14px;
+        background: #1e293b; color: #fff;
+        font-size: 15px; font-weight: 800;
+        border: none; cursor: pointer;
+        transition: background 0.2s; font-family: inherit;
+      }
+      .oc-close-btn:hover { background: #334155; }
 
       /* ─────────────────────────────────────────
    RESPONSIVE
@@ -2435,21 +2597,85 @@
       </div>
     </div>
 
-    <!-- Success Modal -->
-    <div class="modal-overlay success-modal" id="success-modal">
-      <div class="modal-box">
-        <div class="success-icon">✓</div>
-        <h3>অর্ডার সফল হয়েছে!</h3>
-        <p style="margin-top: 8px">
-          আপনার অর্ডারটি গ্রহণ করা হয়েছে। শীঘ্রই আমাদের টিম আপনার সাথে যোগাযোগ
-          করবে।
-        </p>
-        <button
-          class="btn-add"
-          style="margin-top: 20px; padding: 12px"
-          onclick="closeModal('success-modal')"
-        >
-          ঠিক আছে
+    <!-- Order Confirmation Modal -->
+    <div class="order-confirm-overlay" id="order-confirm-modal">
+      <div class="order-confirm-card">
+
+        <!-- Header -->
+        <div class="oc-header">
+          <div class="oc-success-ring">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </div>
+          <div class="oc-title">অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে!</div>
+          <div class="oc-subtitle">আমাদের একজন প্রতিনিধি শীঘ্রই আপনার সাথে যোগাযোগ করবেন।</div>
+
+          <div class="oc-id-row">
+            <div>
+              <div class="oc-id-label">অর্ডার আইডি</div>
+              <div class="oc-id-val">
+                <span id="oc-order-id">#00000</span>
+                <button class="oc-copy-btn" onclick="copyOrderId()">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                  </svg>
+                  কপি করুন
+                </button>
+              </div>
+            </div>
+            <div class="oc-status-col">
+              <div class="oc-status-label">বর্তমান স্ট্যাটাস</div>
+              <span class="oc-status-badge">Processing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="oc-body">
+
+          <!-- Customer info — compact single row + address -->
+          <div class="oc-section">
+            <div class="oc-section-head">কাস্টমার ইনফরমেশন</div>
+            <div class="oc-info-row">
+              <div class="oc-info-cell">
+                <div class="oc-info-key">নাম</div>
+                <div class="oc-info-val" id="oc-cust-name">—</div>
+              </div>
+              <div class="oc-info-cell">
+                <div class="oc-info-key">মোবাইল নাম্বার</div>
+                <div class="oc-info-val" id="oc-cust-phone">—</div>
+              </div>
+            </div>
+            <div class="oc-addr-cell">
+              <div class="oc-info-key">ডেলিভারি ঠিকানা</div>
+              <div class="oc-info-val" id="oc-cust-addr">—</div>
+            </div>
+          </div>
+
+          <!-- Order summary -->
+          <div class="oc-section">
+            <div class="oc-section-head">অর্ডার সামারি</div>
+            <div id="oc-items-list"></div>
+            <div class="oc-del-row">
+              <span class="oc-del-label">ডেলিভারি চার্জ</span>
+              <span class="oc-del-val">৳<span id="oc-delivery">0</span></span>
+            </div>
+            <div class="oc-total-row">
+              <span class="oc-total-label">সর্বমোট বিল</span>
+              <span class="oc-total-val">৳<span id="oc-total">0.00</span></span>
+            </div>
+            <div class="oc-date-line" id="oc-date-line"></div>
+          </div>
+
+        </div>
+
+        <!-- Close -->
+        <button class="oc-close-btn" onclick="closeOrderConfirm()">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+          ক্লোজ করুন
         </button>
       </div>
     </div>
@@ -2862,6 +3088,10 @@
       }
 
       /* ── PLACE ORDER ── */
+      function generateOrderId() {
+        return Math.floor(10000 + Math.random() * 90000);
+      }
+
       function placeOrder() {
         const name = document.getElementById("cust-name").value.trim();
         const phone = document.getElementById("cust-phone").value.trim();
@@ -2875,10 +3105,71 @@
           alert("কার্টে কোনো প্রোডাক্ট নেই।");
           return;
         }
-        document.getElementById("success-modal").classList.add("open");
+
+        // Generate order ID
+        const orderId = generateOrderId();
+        window._lastOrderId = orderId;
+
+        // Populate modal
+        document.getElementById("oc-order-id").textContent = "#" + orderId;
+        document.getElementById("oc-cust-name").textContent = name;
+        document.getElementById("oc-cust-phone").textContent = phone;
+        document.getElementById("oc-cust-addr").textContent = addr;
+
+        // Items
+        const items = Object.entries(cart);
+        const subtotal = items.reduce((a, [, v]) => a + v.price * v.qty, 0);
+        const total = subtotal + (subtotal > 0 ? deliveryCost : 0);
+
+        const itemsHtml = items.map(([, v]) =>
+          `<div class="oc-item-row">
+            <div class="oc-item-name">${v.name} <span>×${v.qty}</span></div>
+            <div class="oc-item-price">৳${(v.price * v.qty).toLocaleString()}</div>
+          </div>`
+        ).join("");
+        document.getElementById("oc-items-list").innerHTML = itemsHtml;
+        document.getElementById("oc-delivery").textContent = deliveryCost;
+        document.getElementById("oc-total").textContent = total.toLocaleString() + ".00";
+
+        // Date
+        const now = new Date();
+        const options = { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: true };
+        document.getElementById("oc-date-line").textContent =
+          "অর্ডারের তারিখ: " + now.toLocaleString('en-US', options);
+
+        // Open
+        document.getElementById("order-confirm-modal").classList.add("open");
+        document.body.style.overflow = "hidden";
       }
 
-      /* close modal on overlay click */
+      function closeOrderConfirm() {
+        document.getElementById("order-confirm-modal").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function copyOrderId() {
+        const id = document.getElementById("oc-order-id").textContent;
+        navigator.clipboard.writeText(id).then(() => {
+          const btn = document.querySelector(".oc-copy-btn");
+          const orig = btn.innerHTML;
+          btn.innerHTML = "✓ কপি হয়েছে";
+          btn.style.background = "#dcfce7";
+          btn.style.color = "#059669";
+          setTimeout(() => {
+            btn.innerHTML = orig;
+            btn.style.background = "";
+            btn.style.color = "";
+          }, 2000);
+        });
+      }
+
+      // Close on overlay click
+      document.getElementById("order-confirm-modal") && 
+        document.getElementById("order-confirm-modal").addEventListener("click", function(e) {
+          if (e.target === this) closeOrderConfirm();
+        });
+
+      /* close variation modal on overlay click */
       document.querySelectorAll(".modal-overlay").forEach((overlay) => {
         overlay.addEventListener("click", (e) => {
           if (e.target === overlay) overlay.classList.remove("open");

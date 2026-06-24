@@ -1,1859 +1,2811 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn" class="scroll-smooth">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jersey – World Cup Offer | Prodhan.com</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jersey – World Cup Offer | Prodhan.com</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
 
-<style>
-/* ─── RESET & BASE ─── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'Anek Bangla', 'Roboto', sans-serif;
-  background: #f8f9fa;
-  color: #1e293b;
-  overflow-x: hidden;
-  padding: 10px;
-}
-img { display: block; max-width: 100%; }
-button { font-family: inherit; cursor: pointer; }
-input, textarea { font-family: inherit; }
+    <style>
+      /* ─── RESET & BASE ─── */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Anek Bangla", "Roboto", sans-serif;
+        background: #f8f9fa;
+        color: #1e293b;
+        overflow-x: hidden;
+        padding: 10px;
+      }
+      img {
+        display: block;
+        max-width: 100%;
+      }
+      button {
+        font-family: inherit;
+        cursor: pointer;
+      }
+      input,
+      textarea {
+        font-family: inherit;
+      }
 
-/* ─── CSS VARIABLES ─── */
-:root {
-  --cyan: #00A6CC;
-  --cyan-dark: #008ebf;
-  --cyan-light: #e0f7ff;
-  --yellow: #f59e0b;
-  --yellow-light: #fbbf24;
-  --red: #ef4444;
-  --slate-800: #1e293b;
-  --slate-600: #475569;
-  --slate-400: #94a3b8;
-  --slate-200: #e2e8f0;
-  --slate-100: #f1f5f9;
-  --slate-50: #f8fafc;
-  --white: #ffffff;
-  --green: #10b981;
-}
+      /* ─── CSS VARIABLES ─── */
+      :root {
+        --cyan: #00a6cc;
+        --cyan-dark: #008ebf;
+        --cyan-light: #e0f7ff;
+        --yellow: #f59e0b;
+        --yellow-light: #fbbf24;
+        --red: #ef4444;
+        --slate-800: #1e293b;
+        --slate-600: #475569;
+        --slate-400: #94a3b8;
+        --slate-200: #e2e8f0;
+        --slate-100: #f1f5f9;
+        --slate-50: #f8fafc;
+        --white: #ffffff;
+        --green: #10b981;
+      }
 
-/* ─────────────────────────────────────────
+      /* ─────────────────────────────────────────
    HERO SECTION
 ───────────────────────────────────────── */
-.hero {
-  position: relative;
-  width: 100%;
-  padding: 40px 20px 30px;
-  background: linear-gradient(135deg, rgba(0,166,204,0.10) 0%, rgba(255,251,235,0.30) 50%, rgba(0,166,204,0.05) 100%);
-  overflow: hidden;
-}
-.hero-bg-field {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-.hero-bg-field img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  opacity: 0.04;
-  filter: grayscale(1);
-}
-.hero-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-size: 40px 40px;
-  background-image:
-    linear-gradient(to right, rgba(0,166,204,0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0,166,204,0.05) 1px, transparent 1px);
-}
-.hero-inner {
-  position: relative;
-  z-index: 10;
-  max-width: 1152px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: center;
-}
-/* LEFT CONTENT */
-.hero-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.hero-eyebrow {
-  color: var(--cyan);
-  font-size: 14px;
-  font-weight: 800;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-  animation: fadeUp 0.8s ease-out both;
-}
-.hero-headline {
-  font-size: clamp(24px, 3.5vw, 48px);
-  font-weight: 800;
-  line-height: 1.25;
-  color: var(--slate-800);
-  margin-bottom: 18px;
-  animation: fadeUp 0.8s 0.15s ease-out both;
-}
-.hero-headline .line-blue {
-  color: var(--cyan);
-  white-space: nowrap;
-  display: block;
-  margin-bottom: 4px;
-}
-.hero-headline .line-discount {
-  display: inline-block;
-  position: relative;
-  margin-top: 6px;
-}
-.hero-headline .line-discount span {
-  background: linear-gradient(90deg, #dc2626, #991b1b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-headline .line-discount svg {
-  position: absolute;
-  width: 100%;
-  height: 12px;
-  bottom: -8px;
-  left: 0;
-}
-.hero-sub {
-  font-size: 16px;
-  color: var(--slate-600);
-  font-weight: 500;
-  margin-bottom: 28px;
-  line-height: 1.6;
-  animation: fadeUp 0.8s 0.2s ease-out both;
-}
-.hero-sub .highlight {
-  font-weight: 800;
-  background: linear-gradient(90deg, #dc2626, #991b1b);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
+      .hero {
+        position: relative;
+        width: 100%;
+        padding: 40px 20px 30px;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 166, 204, 0.1) 0%,
+          rgba(255, 251, 235, 0.3) 50%,
+          rgba(0, 166, 204, 0.05) 100%
+        );
+        overflow: hidden;
+      }
+      .hero-bg-field {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .hero-bg-field img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.04;
+        filter: grayscale(1);
+      }
+      .hero-bg-grid {
+        position: absolute;
+        inset: 0;
+        background-size: 40px 40px;
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(0, 166, 204, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(0, 166, 204, 0.05) 1px,
+            transparent 1px
+          );
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 10;
+        max-width: 1152px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+      /* LEFT CONTENT */
+      .hero-left {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .hero-eyebrow {
+        color: var(--cyan);
+        font-size: 14px;
+        font-weight: 800;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+        animation: fadeUp 0.8s ease-out both;
+      }
+      .hero-headline {
+        font-size: clamp(24px, 3.5vw, 48px);
+        font-weight: 800;
+        line-height: 1.25;
+        color: var(--slate-800);
+        margin-bottom: 18px;
+        animation: fadeUp 0.8s 0.15s ease-out both;
+      }
+      .hero-headline .line-blue {
+        color: var(--cyan);
+        white-space: nowrap;
+        display: block;
+        margin-bottom: 4px;
+      }
+      .hero-headline .line-discount {
+        display: inline-block;
+        position: relative;
+        margin-top: 6px;
+      }
+      .hero-headline .line-discount span {
+        background: linear-gradient(90deg, #dc2626, #991b1b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-headline .line-discount svg {
+        position: absolute;
+        width: 100%;
+        height: 12px;
+        bottom: -8px;
+        left: 0;
+      }
+      .hero-sub {
+        font-size: 16px;
+        color: var(--slate-600);
+        font-weight: 500;
+        margin-bottom: 28px;
+        line-height: 1.6;
+        animation: fadeUp 0.8s 0.2s ease-out both;
+      }
+      .hero-sub .highlight {
+        font-weight: 800;
+        background: linear-gradient(90deg, #dc2626, #991b1b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
 
-/* COUNTDOWN */
-.countdown-wrap {
-  margin-bottom: 32px;
-  animation: fadeUp 0.8s 0.3s ease-out both;
-}
-.countdown-label {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--slate-400);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-.countdown-boxes {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.cd-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 58px;
-  height: 58px;
-  background: var(--white);
-  border: 1px solid rgba(0,166,204,0.20);
-  border-radius: 12px;
-}
-.cd-box.active-box {
-  background: rgba(0,166,204,0.06);
-  border-color: rgba(0,166,204,0.30);
-}
-.cd-val {
-  font-size: 22px;
-  font-weight: 900;
-  color: var(--slate-800);
-  line-height: 1;
-}
-.cd-box.active-box .cd-val { color: var(--cyan); }
-.cd-unit {
-  font-size: 9px;
-  font-weight: 700;
-  color: var(--slate-400);
-  text-transform: uppercase;
-  margin-top: 3px;
-}
-.cd-box.active-box .cd-unit { color: var(--cyan); }
-.cd-sep {
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--slate-200);
-}
+      /* COUNTDOWN */
+      .countdown-wrap {
+        margin-bottom: 32px;
+        animation: fadeUp 0.8s 0.3s ease-out both;
+      }
+      .countdown-label {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--slate-400);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .countdown-boxes {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .cd-box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 58px;
+        height: 58px;
+        background: var(--white);
+        border: 1px solid rgba(0, 166, 204, 0.2);
+        border-radius: 12px;
+      }
+      .cd-box.active-box {
+        background: rgba(0, 166, 204, 0.06);
+        border-color: rgba(0, 166, 204, 0.3);
+      }
+      .cd-val {
+        font-size: 22px;
+        font-weight: 900;
+        color: var(--slate-800);
+        line-height: 1;
+      }
+      .cd-box.active-box .cd-val {
+        color: var(--cyan);
+      }
+      .cd-unit {
+        font-size: 9px;
+        font-weight: 700;
+        color: var(--slate-400);
+        text-transform: uppercase;
+        margin-top: 3px;
+      }
+      .cd-box.active-box .cd-unit {
+        color: var(--cyan);
+      }
+      .cd-sep {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--slate-200);
+      }
 
-/* CTA BUTTON */
-.hero-cta-wrap {
-  animation: fadeUp 0.8s 0.35s ease-out both;
-}
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px 48px;
-  background: linear-gradient(135deg, #fbbf24, #f59e0b);
-  color: var(--slate-800);
-  font-size: 18px;
-  font-weight: 800;
-  border-radius: 9999px;
-  text-decoration: none;
-  border: 2px solid #fde68a;
-  transition: transform 0.2s;
-  animation: shakeCTA 3s ease-in-out infinite;
-  width: auto;
-}
-.hero-cta:hover { transform: scale(1.03); }
-.hero-cta:active { transform: scale(0.97); }
-.hero-cta svg { width: 20px; height: 20px; flex-shrink: 0; }
+      /* CTA BUTTON */
+      .hero-cta-wrap {
+        animation: fadeUp 0.8s 0.35s ease-out both;
+      }
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 12px 48px;
+        background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        color: var(--slate-800);
+        font-size: 18px;
+        font-weight: 800;
+        border-radius: 9999px;
+        text-decoration: none;
+        border: 2px solid #fde68a;
+        transition: transform 0.2s;
+        animation: shakeCTA 3s ease-in-out infinite;
+        width: auto;
+      }
+      .hero-cta:hover {
+        transform: scale(1.03);
+      }
+      .hero-cta:active {
+        transform: scale(0.97);
+      }
+      .hero-cta svg {
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+      }
 
-/* RIGHT: Jersey image */
-.hero-right {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation: fadeUp 0.8s 0.15s ease-out both;
-}
-.jersey-img-wrap {
-  position: relative;
-  width: 100%;
-  max-width: 520px;
-  -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 95%);
-  mask-image: linear-gradient(to bottom, black 65%, transparent 95%);
-}
-.jersey-circle {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 50% 30%, rgba(0,166,204,0.18) 0%, rgba(0,166,204,0.06) 50%, transparent 75%);
-  border-radius: 50%;
-  transform: scale(0.9);
-  z-index: 0;
-}
-.jersey-img-wrap img {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  height: auto;
-}
+      /* RIGHT: Jersey image */
+      .hero-right {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        animation: fadeUp 0.8s 0.15s ease-out both;
+      }
+      .jersey-img-wrap {
+        position: relative;
+        width: 100%;
+        max-width: 520px;
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          black 65%,
+          transparent 95%
+        );
+        mask-image: linear-gradient(to bottom, black 65%, transparent 95%);
+      }
+      .jersey-circle {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 50% 30%,
+          rgba(0, 166, 204, 0.18) 0%,
+          rgba(0, 166, 204, 0.06) 50%,
+          transparent 75%
+        );
+        border-radius: 50%;
+        transform: scale(0.9);
+        z-index: 0;
+      }
+      .jersey-img-wrap img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: auto;
+      }
 
-/* ─── ANIMATIONS ─── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes shakeCTA {
-  0%, 80%, 100% { transform: scale(1) rotate(0deg); }
-  85% { transform: scale(1.05) rotate(2deg); }
-  90% { transform: scale(1.05) rotate(-2deg); }
-  95% { transform: scale(1.05) rotate(2deg); }
-}
+      /* ─── ANIMATIONS ─── */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes shakeCTA {
+        0%,
+        80%,
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+        85% {
+          transform: scale(1.05) rotate(2deg);
+        }
+        90% {
+          transform: scale(1.05) rotate(-2deg);
+        }
+        95% {
+          transform: scale(1.05) rotate(2deg);
+        }
+      }
 
-/* ─────────────────────────────────────────
+      /* ─────────────────────────────────────────
    SIZE CHART SECTION
 ───────────────────────────────────────── */
-.size-chart-section {
-  width: 100%;
-  background: var(--white);
-  border-top: 1px solid var(--slate-200);
-  border-bottom: 1px solid var(--slate-200);
-}
-.size-chart-title {
-  text-align: center;
-  font-size: 22px;
-  font-weight: 800;
-  padding: 28px 20px 22px;
-  background: linear-gradient(90deg, var(--slate-800), var(--cyan));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  border-bottom: 1px solid var(--slate-100);
-  letter-spacing: 0.3px;
-}
-.tab-header {
-  display: flex;
-  border-bottom: 2px solid var(--slate-200);
-  background: var(--white);
-}
-.tab-btn {
-  flex: 1;
-  padding: 18px 20px;
-  background: transparent;
-  border: none;
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--slate-400);
-  cursor: pointer;
-  position: relative;
-  transition: color 0.25s, background 0.25s;
-}
-.tab-btn::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%) scaleX(0);
-  width: 100%;
-  height: 3px;
-  background: var(--cyan);
-  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
-}
-.tab-btn:hover { color: var(--cyan); background: var(--slate-50); }
-.tab-btn.active { color: var(--cyan); background: var(--white); }
-.tab-btn.active::after { transform: translateX(-50%) scaleX(1); }
-.tab-content { display: none; animation: fadeIn 0.4s ease both; }
-.tab-content.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-.size-table { width: 100%; border-collapse: collapse; text-align: center; }
-.size-table th, .size-table td {
-  border: 1px solid var(--slate-200);
-  padding: 15px 20px;
-}
-.size-table th {
-  background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));
-  color: var(--white);
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 15px;
-  letter-spacing: 1px;
-}
-.size-table td {
-  background: var(--white);
-  font-size: 15px;
-  color: #334155;
-  font-weight: 600;
-}
-.size-table tr:nth-child(even) td { background: var(--slate-50); }
-.size-table tr:hover td { background: #f0f9ff; }
+      .size-chart-section {
+        width: 100%;
+        background: var(--white);
+        border-top: 1px solid var(--slate-200);
+        border-bottom: 1px solid var(--slate-200);
+      }
+      .size-chart-title {
+        text-align: center;
+        font-size: 22px;
+        font-weight: 800;
+        padding: 28px 20px 22px;
+        background: linear-gradient(90deg, var(--slate-800), var(--cyan));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        border-bottom: 1px solid var(--slate-100);
+        letter-spacing: 0.3px;
+      }
+      .tab-header {
+        display: flex;
+        border-bottom: 2px solid var(--slate-200);
+        background: var(--white);
+      }
+      .tab-btn {
+        flex: 1;
+        padding: 18px 20px;
+        background: transparent;
+        border: none;
+        font-size: 17px;
+        font-weight: 600;
+        color: var(--slate-400);
+        cursor: pointer;
+        position: relative;
+        transition:
+          color 0.25s,
+          background 0.25s;
+      }
+      .tab-btn::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        width: 100%;
+        height: 3px;
+        background: var(--cyan);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .tab-btn:hover {
+        color: var(--cyan);
+        background: var(--slate-50);
+      }
+      .tab-btn.active {
+        color: var(--cyan);
+        background: var(--white);
+      }
+      .tab-btn.active::after {
+        transform: translateX(-50%) scaleX(1);
+      }
+      .tab-content {
+        display: none;
+        animation: fadeIn 0.4s ease both;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .size-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+      }
+      .size-table th,
+      .size-table td {
+        border: 1px solid var(--slate-200);
+        padding: 15px 20px;
+      }
+      .size-table th {
+        background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));
+        color: var(--white);
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 15px;
+        letter-spacing: 1px;
+      }
+      .size-table td {
+        background: var(--white);
+        font-size: 15px;
+        color: #334155;
+        font-weight: 600;
+      }
+      .size-table tr:nth-child(even) td {
+        background: var(--slate-50);
+      }
+      .size-table tr:hover td {
+        background: #f0f9ff;
+      }
 
-/* ─────────────────────────────────────────
+      /* ─────────────────────────────────────────
    PRODUCT GRID
 ───────────────────────────────────────── */
-.products-section {
-  width: 100%;
-  padding: 0;
-  background: var(--slate-50);
-}
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
-  /* border-top: 3px solid var(--slate-200); */
-}
-.product-card {
-  background: var(--white);
-  border: 1px solid var(--slate-200);
-  border-top: none;
-  border-left: none;
-  display: flex;
-  flex-direction: column;
-  animation: fadeUp 0.6s ease-out both;
-  transition: box-shadow 0.2s;
-  border-radius: 10px;
-  overflow: hidden;
-  
-}
-.product-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); z-index: 1; position: relative; }
-.product-img-wrap {
-  position: relative;
-  aspect-ratio: 1;
-  overflow: visible;
-  background: var(--slate-50);
-  cursor: pointer;
-  border-radius: 10px 10px 0 0;
-}
-.product-img-wrap img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-.product-card:hover .product-img-wrap img { transform: scale(1.05); }
-.discount-badge{
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, 50%);
-    background: var(--red);
-    color: #fff;
-    padding: 2px 15px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    z-index: 10;
-}
-.product-body {
-  padding: 10px 10px 12px;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  text-align: center;
-  align-items: center;
-}
-.product-name {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--slate-800);
-  line-height: 1.4;
-  margin-bottom: 2px;
-  margin-top: 4px;
-  flex: 1;
-}
-.product-price {
-  display: flex;
-  /* align-items: baseline; */
-  gap: 5px;
-  margin-bottom: 10px;
-}
-.reg-price {
-  position: relative;
-  display: inline-block;
-  color: var(--slate-400);
-  font-size: 15px;
-  font-weight: 400;
-}
-.reg-price::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: -5%;
-  width: 110%;
-  height: 1.5px;
-  background: var(--red);
-  transform: rotate(-15deg);
-  
-}
-.sale-price {
-  font-size: 20px;
-  font-weight: 800;
-  /* color: var(--slate-800); */
-  color: #00A6CC;
-}
-/* Buttons */
-.btn-add, .btn-sold {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 8px 10px;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: 700;
-  border: none;
-  transition: all 0.2s;
-}
-.btn-add {
-  background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));
-  color: var(--white);
-  box-shadow: 0 3px 10px rgba(0,166,204,0.25);
-}
-.btn-add:hover { filter: brightness(1.1); transform: translateY(-1px); }
-.btn-add:active { transform: translateY(0); }
-.btn-sold {
-  background: #cbd5e1;
-  color: var(--white);
-  cursor: not-allowed;
-}
-.btn-add svg { flex-shrink: 0; }
-/* Qty control */
-.qty-ctrl {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  background: var(--slate-100);
-  border-radius: 8px;
-  overflow: hidden;
-  margin-top: 6px;
-}
-.qty-ctrl.visible { display: flex; }
-.qty-btn {
-  width: 34px;
-  height: 34px;
-  background: none;
-  border: none;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--cyan);
-  cursor: pointer;
-  transition: background 0.15s;
-}
-.qty-btn:hover { background: rgba(0,166,204,0.12); }
-.qty-val {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--slate-800);
-}
+      .products-section {
+        width: 100%;
+        padding: 0;
+        background: var(--slate-50);
+      }
+      .product-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 20px;
+        /* border-top: 3px solid var(--slate-200); */
+      }
+      .product-card {
+        background: var(--white);
+        border: 1px solid var(--slate-200);
+        border-top: none;
+        border-left: none;
+        display: flex;
+        flex-direction: column;
+        animation: fadeUp 0.6s ease-out both;
+        transition: box-shadow 0.2s;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .product-card:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        z-index: 1;
+        position: relative;
+      }
+      .product-img-wrap {
+        position: relative;
+        aspect-ratio: 1;
+        overflow: visible;
+        background: var(--slate-50);
+        cursor: pointer;
+        border-radius: 10px 10px 0 0;
+      }
+      .product-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .product-card:hover .product-img-wrap img {
+        transform: scale(1.05);
+      }
+      .discount-badge {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%, 50%);
+        background: var(--red);
+        color: #fff;
+        padding: 2px 15px;
+        border-radius: 20px;
+        font-size: 11px;
+        font-weight: 700;
+        z-index: 10;
+      }
+      .product-body {
+        padding: 10px 10px 12px;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        text-align: center;
+        align-items: center;
+      }
+      .product-name {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--slate-800);
+        line-height: 1.4;
+        margin-bottom: 2px;
+        margin-top: 4px;
+        flex: 1;
+      }
+      .product-price {
+        display: flex;
+        /* align-items: baseline; */
+        gap: 5px;
+        margin-bottom: 10px;
+      }
+      .reg-price {
+        position: relative;
+        display: inline-block;
+        color: var(--slate-400);
+        font-size: 15px;
+        font-weight: 400;
+      }
+      .reg-price::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -5%;
+        width: 110%;
+        height: 1.5px;
+        background: var(--red);
+        transform: rotate(-15deg);
+      }
+      .sale-price {
+        font-size: 20px;
+        font-weight: 800;
+        /* color: var(--slate-800); */
+        color: #00a6cc;
+      }
+      /* Buttons */
+      .btn-add,
+      .btn-sold {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 700;
+        border: none;
+        transition: all 0.2s;
+      }
+      .btn-add {
+        background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));
+        color: var(--white);
+        box-shadow: 0 3px 10px rgba(0, 166, 204, 0.25);
+      }
+      .btn-add:hover {
+        filter: brightness(1.1);
+        transform: translateY(-1px);
+      }
+      .btn-add:active {
+        transform: translateY(0);
+      }
+      .btn-sold {
+        background: #cbd5e1;
+        color: var(--white);
+        cursor: not-allowed;
+      }
+      .btn-add svg {
+        flex-shrink: 0;
+      }
+      /* Qty control */
+      .qty-ctrl {
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        background: var(--slate-100);
+        border-radius: 8px;
+        overflow: hidden;
+        margin-top: 6px;
+      }
+      .qty-ctrl.visible {
+        display: flex;
+      }
+      .qty-btn {
+        width: 34px;
+        height: 34px;
+        background: none;
+        border: none;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--cyan);
+        cursor: pointer;
+        transition: background 0.15s;
+      }
+      .qty-btn:hover {
+        background: rgba(0, 166, 204, 0.12);
+      }
+      .qty-val {
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--slate-800);
+      }
 
-/* ─────────────────────────────────────────
+      /* ─────────────────────────────────────────
    CHECKOUT / ORDER FORM
 ───────────────────────────────────────── */
-.checkout-section {
-  width: 100%;
-  background: var(--white);
-}
-.checkout-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-}
-.checkout-col {
-  padding: 32px 32px 40px;
-}
-.checkout-col:first-child {
-  border-right: 1px solid var(--slate-200);
-}
-.checkout-heading {
-  font-size: 20px;
-  font-weight: 800;
-  color: var(--slate-800);
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 2px solid var(--cyan);
-  display: inline-block;
-}
-.form-group { margin-bottom: 14px; }
-.form-input, .form-textarea {
-  width: 100%;
-  padding: 13px 16px;
-  border: 1.5px solid var(--slate-200);
-  border-radius: 10px;
-  font-size: 15px;
-  color: var(--slate-800);
-  background: var(--white);
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.form-input:focus, .form-textarea:focus {
-  border-color: var(--cyan);
-  box-shadow: 0 0 0 3px rgba(0,166,204,0.12);
-}
-.form-textarea { resize: none; }
+      .checkout-section {
+        width: 100%;
+        background: var(--white);
+      }
+      .checkout-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+      }
+      .checkout-col {
+        padding: 32px 32px 40px;
+      }
+      .checkout-col:first-child {
+        border-right: 1px solid var(--slate-200);
+      }
+      .checkout-heading {
+        font-size: 20px;
+        font-weight: 800;
+        color: var(--slate-800);
+        margin-bottom: 20px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid var(--cyan);
+        display: inline-block;
+      }
+      .form-group {
+        margin-bottom: 14px;
+      }
+      .form-input,
+      .form-textarea {
+        width: 100%;
+        padding: 13px 16px;
+        border: 1.5px solid var(--slate-200);
+        border-radius: 10px;
+        font-size: 15px;
+        color: var(--slate-800);
+        background: var(--white);
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .form-input:focus,
+      .form-textarea:focus {
+        border-color: var(--cyan);
+        box-shadow: 0 0 0 3px rgba(0, 166, 204, 0.12);
+      }
+      .form-textarea {
+        resize: none;
+      }
 
-/* Delivery boxes */
-.delivery-options { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-.delivery-label {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 18px;
-  border: 2px solid var(--slate-200);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.2s;
-  background: var(--white);
-}
-.delivery-label.selected {
-  border-color: var(--cyan);
-  background: var(--cyan-light);
-}
-.delivery-label input[type="radio"] { display: none; }
-.delivery-icon svg {
-  width: 28px; height: 28px;
-  fill: var(--cyan);
-  flex-shrink: 0;
-}
-.delivery-text strong { display: block; font-size: 15px; font-weight: 700; color: var(--slate-800); }
-.delivery-text span { font-size: 13px; color: var(--slate-600); }
+      /* Delivery boxes */
+      .delivery-options {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 24px;
+      }
+      .delivery-label {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        border: 2px solid var(--slate-200);
+        border-radius: 12px;
+        cursor: pointer;
+        transition:
+          border-color 0.2s,
+          background 0.2s;
+        background: var(--white);
+      }
+      .delivery-label.selected {
+        border-color: var(--cyan);
+        background: var(--cyan-light);
+      }
+      .delivery-label input[type="radio"] {
+        display: none;
+      }
+      .delivery-icon svg {
+        width: 28px;
+        height: 28px;
+        fill: var(--cyan);
+        flex-shrink: 0;
+      }
+      .delivery-text strong {
+        display: block;
+        font-size: 15px;
+        font-weight: 700;
+        color: var(--slate-800);
+      }
+      .delivery-text span {
+        font-size: 13px;
+        color: var(--slate-600);
+      }
 
-/* Order summary table */
-.summary-heading {
-  font-size: 17px;
-  font-weight: 800;
-  color: var(--slate-800);
-  margin-bottom: 12px;
-}
-.order-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-  font-size: 14px;
-}
-.order-table th {
-  background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));
-  color: var(--white);
-  padding: 10px 14px;
-  text-align: left;
-  font-weight: 600;
-}
-.order-table td {
-  padding: 10px 14px;
-  border: 1px solid var(--slate-200);
-  color: var(--slate-800);
-}
-.order-table tr:nth-child(even) td { background: var(--slate-50); }
-.order-table .total-row td {
-  font-size: 16px;
-  font-weight: 800;
-  background: var(--cyan-light);
-  color: var(--cyan-dark);
-}
-.empty-cart-msg {
-  text-align: center;
-  padding: 24px;
-  color: var(--slate-400);
-  font-size: 14px;
-}
+      /* Order summary table */
+      .summary-heading {
+        font-size: 17px;
+        font-weight: 800;
+        color: var(--slate-800);
+        margin-bottom: 12px;
+      }
+      .order-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        font-size: 14px;
+      }
+      .order-table th {
+        background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));
+        color: var(--white);
+        padding: 10px 14px;
+        text-align: left;
+        font-weight: 600;
+      }
+      .order-table td {
+        padding: 10px 14px;
+        border: 1px solid var(--slate-200);
+        color: var(--slate-800);
+      }
+      .order-table tr:nth-child(even) td {
+        background: var(--slate-50);
+      }
+      .order-table .total-row td {
+        font-size: 16px;
+        font-weight: 800;
+        background: var(--cyan-light);
+        color: var(--cyan-dark);
+      }
+      .empty-cart-msg {
+        text-align: center;
+        padding: 24px;
+        color: var(--slate-400);
+        font-size: 14px;
+      }
 
-/* Order button */
-.btn-order {
-  width: 100%;
-  padding: 16px;
-  background: linear-gradient(135deg, #059669, var(--green));
-  color: var(--white);
-  font-size: 18px;
-  font-weight: 800;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: all 0.2s;
-  box-shadow: 0 6px 20px rgba(16,185,129,0.30);
-}
-.btn-order:hover:not(:disabled) { filter: brightness(1.08); transform: translateY(-2px); }
-.btn-order:disabled {
-  background: #cbd5e1;
-  box-shadow: none;
-  cursor: not-allowed;
-  transform: none;
-}
+      /* Order button */
+      .btn-order {
+        width: 100%;
+        padding: 16px;
+        background: linear-gradient(135deg, #059669, var(--green));
+        color: var(--white);
+        font-size: 18px;
+        font-weight: 800;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        transition: all 0.2s;
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+      }
+      .btn-order:hover:not(:disabled) {
+        filter: brightness(1.08);
+        transform: translateY(-2px);
+      }
+      .btn-order:disabled {
+        background: #cbd5e1;
+        box-shadow: none;
+        cursor: not-allowed;
+        transform: none;
+      }
 
-/* Mobile sticky bar */
-.sticky-bar {
-  display: none;
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  background: var(--white);
-  border-top: 1px solid var(--slate-200);
-  box-shadow: 0 -4px 20px rgba(0,0,0,0.10);
-  z-index: 999;
-  padding: 12px 16px;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.sticky-total {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.sticky-total svg { color: var(--cyan); }
-.sticky-total-label { font-size: 11px; color: var(--slate-400); }
-.sticky-total-val { font-size: 16px; font-weight: 800; color: var(--slate-800); }
-.btn-sticky {
-  flex: 1;
-  padding: 13px 20px;
-  background: linear-gradient(135deg, #059669, var(--green));
-  color: var(--white);
-  font-size: 16px;
-  font-weight: 800;
-  border: none;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  cursor: pointer;
-}
-.btn-sticky:disabled { background: #cbd5e1; cursor: not-allowed; }
+      /* Mobile sticky bar */
+      .sticky-bar {
+        display: none;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-top: 1px solid var(--slate-200);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        padding: 12px 16px;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .sticky-total {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .sticky-total svg {
+        color: var(--cyan);
+      }
+      .sticky-total-label {
+        font-size: 11px;
+        color: var(--slate-400);
+      }
+      .sticky-total-val {
+        font-size: 16px;
+        font-weight: 800;
+        color: var(--slate-800);
+      }
+      .btn-sticky {
+        flex: 1;
+        padding: 13px 20px;
+        background: linear-gradient(135deg, #059669, var(--green));
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 800;
+        border: none;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        cursor: pointer;
+      }
+      .btn-sticky:disabled {
+        background: #cbd5e1;
+        cursor: not-allowed;
+      }
 
-/* ─────────────────────────────────────────
+      /* ─────────────────────────────────────────
    VARIATION MODAL
 ───────────────────────────────────────── */
-.modal-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.50);
-  z-index: 1000;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.modal-overlay.open { display: flex; }
-/* lb-dots styles defined in lightbox section below */
-/* modal-box defined above in variation section */
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 18px;
-}
-.modal-title { font-size: 18px; font-weight: 800; color: var(--slate-800); }
-.modal-close {
-  width: 32px; height: 32px;
-  background: var(--slate-100);
-  border: none;
-  border-radius: 50%;
-  font-size: 20px;
-  color: var(--slate-400);
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-}
-.modal-close:hover { background: var(--slate-200); }
-/* ── VARIATION MODAL GRID STYLE ── */
-.variation-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-bottom: 18px;
-}
-.variation-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 8px 12px;
-  border: 2px solid var(--slate-200);
-  border-radius: 12px;
-  cursor: pointer;
-  transition: all 0.2s;
-  background: var(--white);
-  text-align: center;
-  gap: 4px;
-}
-.variation-item:hover:not(.out) { border-color: var(--cyan); background: var(--cyan-light); }
-.variation-item.selected-var { border-color: var(--cyan); background: var(--cyan-light); }
-.variation-item.out { opacity: 0.45; cursor: not-allowed; }
-.var-card-img {
-  width: 100%;
-  aspect-ratio: 1;
-  object-fit: contain;
-  border-radius: 8px;
-  background: var(--slate-50);
-  margin-bottom: 4px;
-}
-.var-name {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--slate-800);
-  line-height: 1.2;
-}
-.var-prices {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  flex-wrap: wrap;
-}
-.var-reg-price {
-  font-size: 11px;
-  color: var(--slate-400);
-  font-weight: 400;
-  position: relative;
-  display: inline-block;
-}
-.var-reg-price::after {
-  content: '';
-  position: absolute;
-  top: 50%; left: -3%; width: 106%; height: 1.5px;
-  background: var(--red);
-  transform: rotate(-12deg);
-}
-.var-sale-price {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--cyan);
-}
-.var-buy-btn {
-  width: 100%;
-  margin-top: 6px;
-  padding: 7px 4px;
-  background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));
-  color: var(--white);
-  font-size: 13px;
-  font-weight: 700;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: filter 0.2s;
-  font-family: inherit;
-}
-.var-buy-btn:hover { filter: brightness(1.1); }
-.var-sold-btn {
-  width: 100%;
-  margin-top: 6px;
-  padding: 7px 4px;
-  background: #cbd5e1;
-  color: var(--white);
-  font-size: 13px;
-  font-weight: 700;
-  border: none;
-  border-radius: 8px;
-  cursor: not-allowed;
-  font-family: inherit;
-}
-/* wider modal for grid */
-.modal-box {
-  background: var(--white);
-  border-radius: 16px;
-  padding: 24px;
-  width: 100%;
-  max-width: 520px;
-  max-height: 90vh;
-  overflow-y: auto;
-  animation: fadeUp 0.25s ease both;
-}
-.modal-order-btn {
-  width: 100%;
-  padding: 14px;
-  background: linear-gradient(135deg, #059669, var(--green));
-  color: var(--white);
-  font-size: 16px;
-  font-weight: 800;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  margin-top: 6px;
-  transition: filter 0.2s;
-}
-.modal-order-btn:hover { filter: brightness(1.08); }
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .modal-overlay.open {
+        display: flex;
+      }
+      /* lb-dots styles defined in lightbox section below */
+      /* modal-box defined above in variation section */
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 18px;
+      }
+      .modal-title {
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--slate-800);
+      }
+      .modal-close {
+        width: 32px;
+        height: 32px;
+        background: var(--slate-100);
+        border: none;
+        border-radius: 50%;
+        font-size: 20px;
+        color: var(--slate-400);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-close:hover {
+        background: var(--slate-200);
+      }
+      /* ── VARIATION MODAL GRID STYLE ── */
+      .variation-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+      .variation-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 8px 12px;
+        border: 2px solid var(--slate-200);
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+        background: var(--white);
+        text-align: center;
+        gap: 4px;
+      }
+      .variation-item:hover:not(.out) {
+        border-color: var(--cyan);
+        background: var(--cyan-light);
+      }
+      .variation-item.selected-var {
+        border-color: var(--cyan);
+        background: var(--cyan-light);
+      }
+      .variation-item.out {
+        opacity: 0.45;
+        cursor: not-allowed;
+      }
+      .var-card-img {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: contain;
+        border-radius: 8px;
+        background: var(--slate-50);
+        margin-bottom: 4px;
+      }
+      .var-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: var(--slate-800);
+        line-height: 1.2;
+      }
+      .var-prices {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        flex-wrap: wrap;
+      }
+      .var-reg-price {
+        font-size: 11px;
+        color: var(--slate-400);
+        font-weight: 400;
+        position: relative;
+        display: inline-block;
+      }
+      .var-reg-price::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -3%;
+        width: 106%;
+        height: 1.5px;
+        background: var(--red);
+        transform: rotate(-12deg);
+      }
+      .var-sale-price {
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--cyan);
+      }
+      .var-buy-btn {
+        width: 100%;
+        margin-top: 6px;
+        padding: 7px 4px;
+        background: linear-gradient(135deg, var(--cyan-dark), var(--cyan));
+        color: var(--white);
+        font-size: 13px;
+        font-weight: 700;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: filter 0.2s;
+        font-family: inherit;
+      }
+      .var-buy-btn:hover {
+        filter: brightness(1.1);
+      }
+      .var-sold-btn {
+        width: 100%;
+        margin-top: 6px;
+        padding: 7px 4px;
+        background: #cbd5e1;
+        color: var(--white);
+        font-size: 13px;
+        font-weight: 700;
+        border: none;
+        border-radius: 8px;
+        cursor: not-allowed;
+        font-family: inherit;
+      }
+      /* wider modal for grid */
+      .modal-box {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 24px;
+        width: 100%;
+        max-width: 520px;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: fadeUp 0.25s ease both;
+      }
+      .modal-order-btn {
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, #059669, var(--green));
+        color: var(--white);
+        font-size: 16px;
+        font-weight: 800;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 6px;
+        transition: filter 0.2s;
+      }
+      .modal-order-btn:hover {
+        filter: brightness(1.08);
+      }
 
-/* ─────────────────────────────────────────
+      /* ─────────────────────────────────────────
    SUCCESS MODAL
 ───────────────────────────────────────── */
-.success-modal .modal-box {
-  text-align: center;
-  max-width: 360px;
-}
-.success-icon {
-  width: 64px; height: 64px;
-  background: #dcfce7;
-  color: var(--green);
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  margin: 0 auto 16px;
-}
-.success-modal h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
-.success-modal p { font-size: 15px; color: var(--slate-600); line-height: 1.6; }
+      .success-modal .modal-box {
+        text-align: center;
+        max-width: 360px;
+      }
+      .success-icon {
+        width: 64px;
+        height: 64px;
+        background: #dcfce7;
+        color: var(--green);
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 30px;
+        margin: 0 auto 16px;
+      }
+      .success-modal h3 {
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 10px;
+      }
+      .success-modal p {
+        font-size: 15px;
+        color: var(--slate-600);
+        line-height: 1.6;
+      }
 
-/* ─────────────────────────────────────────
+      /* ─────────────────────────────────────────
    RESPONSIVE
 ───────────────────────────────────────── */
-@media (max-width: 1100px) {
-  .product-grid { grid-template-columns: repeat(4, 1fr); }
-}
-@media (max-width: 900px) {
-  .product-grid { grid-template-columns: repeat(3, 1fr); }
-  .checkout-inner { grid-template-columns: 1fr; }
-  .checkout-col:first-child { border-right: none; border-bottom: 1px solid var(--slate-200); }
-  .checkout-col { padding: 24px 20px; }
-}
-@media (max-width: 768px) {
-  .hero-inner {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-  .hero-left {
-    order: 2;
-    align-items: center;
-    text-align: center;
-  }
-  .hero-right { order: 1; margin-bottom: 16px; }
-  .hero-eyebrow { justify-content: center; }
-  .countdown-boxes { justify-content: center; }
-  /* .hero-cta { width: auto;} */
+      @media (max-width: 1100px) {
+        .product-grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+      @media (max-width: 900px) {
+        .product-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .checkout-inner {
+          grid-template-columns: 1fr;
+        }
+        .checkout-col:first-child {
+          border-right: none;
+          border-bottom: 1px solid var(--slate-200);
+        }
+        .checkout-col {
+          padding: 24px 20px;
+        }
+      }
+      @media (max-width: 768px) {
+        .hero-inner {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+        .hero-left {
+          order: 2;
+          align-items: center;
+          text-align: center;
+        }
+        .hero-right {
+          order: 1;
+          margin-bottom: 16px;
+        }
+        .hero-eyebrow {
+          justify-content: center;
+        }
+        .countdown-boxes {
+          justify-content: center;
+        }
+        /* .hero-cta { width: auto;} */
 
-  .product-grid { grid-template-columns: repeat(2, 1fr); }
-  .product-name { font-size: 11px; }
+        .product-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .product-name {
+          font-size: 11px;
+        }
 
-  .sticky-bar { display: flex; }
-  .checkout-col { padding: 20px 16px 100px; }
-  .btn-order { display: none; } /* replaced by sticky bar */
+        .sticky-bar {
+          display: flex;
+        }
+        .checkout-col {
+          padding: 20px 16px 100px;
+        }
+        .btn-order {
+          display: none;
+        } /* replaced by sticky bar */
 
-  .hero-headline { font-size: clamp(20px, 6vw, 32px); }
-}
-@media (max-width: 400px) {
-  .cd-box { width: 50px; height: 50px; }
-  .cd-val { font-size: 18px; }
-  .variation-list { grid-template-columns: repeat(2, 1fr); }
-}
-/* ─────────────────────────────────────────
+        .hero-headline {
+          font-size: clamp(20px, 6vw, 32px);
+        }
+      }
+      @media (max-width: 400px) {
+        .cd-box {
+          width: 50px;
+          height: 50px;
+        }
+        .cd-val {
+          font-size: 18px;
+        }
+        .variation-list {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      /* ─────────────────────────────────────────
    IMAGE LIGHTBOX / SLIDER  (modal-card style)
 ───────────────────────────────────────── */
-.lightbox-overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.60);
-  z-index: 2000;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.lightbox-overlay.open { display: flex; }
+      .lightbox-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .lightbox-overlay.open {
+        display: flex;
+      }
 
-/* White card wrapper */
-.lightbox-card {
-  background: #fff;
-  border-radius: 20px;
-  width: 100%;
-  max-width: 380px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 0 0 20px;
-  position: relative;
-  animation: lbFade 0.25s ease both;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-}
+      /* White card wrapper */
+      .lightbox-card {
+        background: #fff;
+        border-radius: 20px;
+        width: 100%;
+        max-width: 380px;
+        max-height: 90vh;
+        overflow-y: auto;
+        padding: 0 0 20px;
+        position: relative;
+        animation: lbFade 0.25s ease both;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      }
 
-.lightbox-close {
-  position: absolute;
-  top: 12px; right: 14px;
-  width: 30px; height: 30px;
-  background: rgba(0,0,0,0.08);
-  border: none;
-  border-radius: 50%;
-  color: #475569;
-  font-size: 18px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s;
-  z-index: 10;
-}
-.lightbox-close:hover { background: rgba(0,0,0,0.15); }
+      .lightbox-close {
+        position: absolute;
+        top: 12px;
+        right: 14px;
+        width: 30px;
+        height: 30px;
+        background: rgba(0, 0, 0, 0.08);
+        border: none;
+        border-radius: 50%;
+        color: #475569;
+        font-size: 18px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+        z-index: 10;
+      }
+      .lightbox-close:hover {
+        background: rgba(0, 0, 0, 0.15);
+      }
 
-.lightbox-img-wrap {
-  width: 100%;
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f1f5f9;
-  border-radius: 20px 20px 0 0;
-  overflow: hidden;
-}
-.lightbox-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  animation: lbFade 0.25s ease both;
-}
-@keyframes lbFade {
-  from { opacity: 0; transform: scale(0.96); }
-  to   { opacity: 1; transform: scale(1); }
-}
-.lightbox-info {
-  text-align: center;
-  color: var(--slate-800);
-  margin: 14px 16px 8px;
-}
-.lightbox-name {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 6px;
-  line-height: 1.4;
-  color: var(--slate-800);
-}
-.lightbox-prices {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-}
-.lb-reg { font-size: 14px; color: #94a3b8; text-decoration: line-through; }
-.lb-sale { font-size: 22px; font-weight: 800; color: var(--cyan); }
+      .lightbox-img-wrap {
+        width: 100%;
+        aspect-ratio: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f1f5f9;
+        border-radius: 20px 20px 0 0;
+        overflow: hidden;
+      }
+      .lightbox-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        animation: lbFade 0.25s ease both;
+      }
+      @keyframes lbFade {
+        from {
+          opacity: 0;
+          transform: scale(0.96);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      .lightbox-info {
+        text-align: center;
+        color: var(--slate-800);
+        margin: 14px 16px 8px;
+      }
+      .lightbox-name {
+        font-size: 15px;
+        font-weight: 700;
+        margin-bottom: 6px;
+        line-height: 1.4;
+        color: var(--slate-800);
+      }
+      .lightbox-prices {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .lb-reg {
+        font-size: 14px;
+        color: #94a3b8;
+        text-decoration: line-through;
+      }
+      .lb-sale {
+        font-size: 22px;
+        font-weight: 800;
+        color: var(--cyan);
+      }
 
-.lightbox-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-top: 10px;
-}
-.lb-arrow {
-  width: 38px; height: 38px;
-  background: var(--slate-100);
-  border: none;
-  border-radius: 50%;
-  color: var(--slate-800);
-  font-size: 22px;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s;
-  flex-shrink: 0;
-}
-.lb-arrow:hover { background: var(--slate-200); }
-.lb-counter {
-  font-size: 14px;
-  font-weight: 700;
-  color: var(--slate-400);
-  min-width: 44px;
-  text-align: center;
-}
+      .lightbox-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        margin-top: 10px;
+      }
+      .lb-arrow {
+        width: 38px;
+        height: 38px;
+        background: var(--slate-100);
+        border: none;
+        border-radius: 50%;
+        color: var(--slate-800);
+        font-size: 22px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background 0.2s;
+        flex-shrink: 0;
+      }
+      .lb-arrow:hover {
+        background: var(--slate-200);
+      }
+      .lb-counter {
+        font-size: 14px;
+        font-weight: 700;
+        color: var(--slate-400);
+        min-width: 44px;
+        text-align: center;
+      }
 
-/* side label (Front / Back / jersey group) */
-.lb-side-label {
-  display: inline-block;
-  background: var(--cyan-light);
-  color: var(--cyan-dark);
-  font-size: 12px;
-  font-weight: 700;
-  padding: 3px 12px;
-  border-radius: 20px;
-  margin-bottom: 6px;
-  letter-spacing: 0.3px;
-}
+      /* side label (Front / Back / jersey group) */
+      .lb-side-label {
+        display: inline-block;
+        background: var(--cyan-light);
+        color: var(--cyan-dark);
+        font-size: 12px;
+        font-weight: 700;
+        padding: 3px 12px;
+        border-radius: 20px;
+        margin-bottom: 6px;
+        letter-spacing: 0.3px;
+      }
 
-/* dot separator between combo groups */
-.lb-dot-sep {
-  color: var(--slate-300);
-  font-size: 12px;
-  line-height: 7px;
-  margin: 0 2px;
-  align-self: center;
-}
+      /* dot separator between combo groups */
+      .lb-dot-sep {
+        color: var(--slate-300);
+        font-size: 12px;
+        line-height: 7px;
+        margin: 0 2px;
+        align-self: center;
+      }
 
-/* dots inside card */
-.lb-dots {
-  display: flex;
-  gap: 7px;
-  justify-content: center;
-  margin: 10px 0 4px;
-}
-.lb-dot {
-  width: 7px; height: 7px;
-  background: var(--slate-200);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background 0.2s, transform 0.2s;
-}
-.lb-dot.active {
-  background: var(--cyan);
-  transform: scale(1.3);
-}
-.lb-dot:hover { background: var(--slate-400); }
-</style>
-</head>
-<body>
-
-<!-- ══════════════════════════════════════
+      /* dots inside card */
+      .lb-dots {
+        display: flex;
+        gap: 7px;
+        justify-content: center;
+        margin: 10px 0 4px;
+      }
+      .lb-dot {
+        width: 7px;
+        height: 7px;
+        background: var(--slate-200);
+        border-radius: 50%;
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .lb-dot.active {
+        background: var(--cyan);
+        transform: scale(1.3);
+      }
+      .lb-dot:hover {
+        background: var(--slate-400);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══════════════════════════════════════
      HERO SECTION
 ══════════════════════════════════════ -->
-<section class="hero">
-  <!-- Background -->
-  <div class="hero-bg-field">
-    <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2000&auto=format&fit=crop" alt="">
-    <div class="hero-bg-grid"></div>
-  </div>
+    <section class="hero">
+      <!-- Background -->
+      <div class="hero-bg-field">
+        <img
+          src="https://images.unsplash.com/photo-1551958219-acbc608c6377?q=80&w=2000&auto=format&fit=crop"
+          alt=""
+        />
+        <div class="hero-bg-grid"></div>
+      </div>
 
-  <div class="hero-inner">
-    <!-- LEFT -->
-    <div class="hero-left">
-      <p class="hero-eyebrow">🏆 ওয়ার্ল্ড কাপ ধামাকা অফার</p>
+      <div class="hero-inner">
+        <!-- LEFT -->
+        <div class="hero-left">
+          <p class="hero-eyebrow">🏆 ওয়ার্ল্ড কাপ ধামাকা অফার</p>
 
-      <h1 class="hero-headline">
-        <span style="font-size:0.75em; display:block; margin-bottom:4px;">প্রিমিয়াম কোয়ালিটি</span>
-        <span class="line-blue">প্লেয়ার এডিশন জার্সিতে চলছে</span>
-        <span class="line-discount">
-          <span>৩৫% মেগা ডিস্কাউন্ট</span>
-          <svg viewBox="0 0 100 12" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="redWave" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#ef4444"/>
-                <stop offset="50%" stop-color="#dc2626"/>
-                <stop offset="100%" stop-color="#991b1b"/>
-              </linearGradient>
-            </defs>
-            <path d="M0,6 Q12.5,12 25,6 T50,6 T75,6 T100,6" stroke="url(#redWave)" stroke-width="3" fill="none" stroke-linecap="round"/>
-          </svg>
-        </span>
-      </h1>
+          <h1 class="hero-headline">
+            <span style="font-size: 0.75em; display: block; margin-bottom: 4px"
+              >প্রিমিয়াম কোয়ালিটি</span
+            >
+            <span class="line-blue">প্লেয়ার এডিশন জার্সিতে চলছে</span>
+            <span class="line-discount">
+              <span>৩৫% মেগা ডিস্কাউন্ট</span>
+              <svg viewBox="0 0 100 12" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient
+                    id="redWave"
+                    x1="0%"
+                    y1="0%"
+                    x2="100%"
+                    y2="0%"
+                  >
+                    <stop offset="0%" stop-color="#ef4444" />
+                    <stop offset="50%" stop-color="#dc2626" />
+                    <stop offset="100%" stop-color="#991b1b" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M0,6 Q12.5,12 25,6 T50,6 T75,6 T100,6"
+                  stroke="url(#redWave)"
+                  stroke-width="3"
+                  fill="none"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+          </h1>
 
-      <p class="hero-sub">
-        কম্বো কিনলে সারাদেশে
-        <span class="highlight">ডেলিভারী চার্জ সম্পূর্ণ ফ্রি।</span>
-      </p>
+          <p class="hero-sub">
+            কম্বো কিনলে সারাদেশে
+            <span class="highlight">ডেলিভারী চার্জ সম্পূর্ণ ফ্রি।</span>
+          </p>
 
-      <!-- Countdown -->
-      <div class="countdown-wrap">
-        <p class="countdown-label">অফার শেষ হতে বাকি:</p>
-        <div class="countdown-boxes">
-          <div class="cd-box">
-            <span class="cd-val" id="cd-days">00</span>
-            <span class="cd-unit">দিন</span>
+          <!-- Countdown -->
+          <div class="countdown-wrap">
+            <p class="countdown-label">অফার শেষ হতে বাকি:</p>
+            <div class="countdown-boxes">
+              <div class="cd-box">
+                <span class="cd-val" id="cd-days">00</span>
+                <span class="cd-unit">দিন</span>
+              </div>
+              <span class="cd-sep">:</span>
+              <div class="cd-box">
+                <span class="cd-val" id="cd-hours">00</span>
+                <span class="cd-unit">ঘন্টা</span>
+              </div>
+              <span class="cd-sep">:</span>
+              <div class="cd-box active-box">
+                <span class="cd-val" id="cd-minutes">00</span>
+                <span class="cd-unit">মিনিট</span>
+              </div>
+              <span class="cd-sep">:</span>
+              <div class="cd-box active-box">
+                <span class="cd-val" id="cd-seconds">00</span>
+                <span class="cd-unit">সেকেন্ড</span>
+              </div>
+            </div>
           </div>
-          <span class="cd-sep">:</span>
-          <div class="cd-box">
-            <span class="cd-val" id="cd-hours">00</span>
-            <span class="cd-unit">ঘন্টা</span>
+
+          <!-- CTA -->
+          <div class="hero-cta-wrap">
+            <a href="#checkout-section" class="hero-cta">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2.5"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+              এখনই কিনুন
+            </a>
           </div>
-          <span class="cd-sep">:</span>
-          <div class="cd-box active-box">
-            <span class="cd-val" id="cd-minutes">00</span>
-            <span class="cd-unit">মিনিট</span>
-          </div>
-          <span class="cd-sep">:</span>
-          <div class="cd-box active-box">
-            <span class="cd-val" id="cd-seconds">00</span>
-            <span class="cd-unit">সেকেন্ড</span>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="hero-right">
+          <div class="jersey-img-wrap">
+            <div class="jersey-circle"></div>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-7-2026-05_31_01-PM-Photoroom.png"
+              onerror="
+                this.src =
+                  'https://cdn-icons-png.flaticon.com/512/861/861512.png'
+              "
+              alt="Premium Jersey"
+            />
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- CTA -->
-      <div class="hero-cta-wrap">
-        <a href="#checkout-section" class="hero-cta">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-          এখনই কিনুন
-        </a>
-      </div>
-    </div>
-
-    <!-- RIGHT -->
-    <div class="hero-right">
-      <div class="jersey-img-wrap">
-        <div class="jersey-circle"></div>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-7-2026-05_31_01-PM-Photoroom.png"
-             onerror="this.src='https://cdn-icons-png.flaticon.com/512/861/861512.png'"
-             alt="Premium Jersey">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
      SIZE CHART SECTION
 ══════════════════════════════════════ -->
-<section class="size-chart-section">
-  <h2 class="size-chart-title">জার্সির পারফেক্ট ফিটিং পেতে আপনার সঠিক সাইজটি মিলিয়ে নিন</h2>
+    <section class="size-chart-section">
+      <h2 class="size-chart-title">
+        জার্সির পারফেক্ট ফিটিং পেতে আপনার সঠিক সাইজটি মিলিয়ে নিন
+      </h2>
 
-  <div class="tab-header">
-    <button class="tab-btn active" data-tab="player-edition">Player Edition Size</button>
-    <button class="tab-btn" data-tab="master-edition">Master Edition Size</button>
-  </div>
+      <div class="tab-header">
+        <button class="tab-btn active" data-tab="player-edition">
+          Player Edition Size
+        </button>
+        <button class="tab-btn" data-tab="master-edition">
+          Master Edition Size
+        </button>
+      </div>
 
-  <div id="player-edition" class="tab-content active">
-    <table class="size-table">
-      <thead><tr><th>Size</th><th>Chest</th><th>Length</th></tr></thead>
-      <tbody>
-        <tr><td>M</td><td>44</td><td>28</td></tr>
-        <tr><td>L</td><td>46</td><td>29</td></tr>
-        <tr><td>XL</td><td>48</td><td>30</td></tr>
-        <tr><td>XXL</td><td>48</td><td>31</td></tr>
-      </tbody>
-    </table>
-  </div>
+      <div id="player-edition" class="tab-content active">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Chest</th>
+              <th>Length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>M</td>
+              <td>44</td>
+              <td>28</td>
+            </tr>
+            <tr>
+              <td>L</td>
+              <td>46</td>
+              <td>29</td>
+            </tr>
+            <tr>
+              <td>XL</td>
+              <td>48</td>
+              <td>30</td>
+            </tr>
+            <tr>
+              <td>XXL</td>
+              <td>48</td>
+              <td>31</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-  <div id="master-edition" class="tab-content">
-    <table class="size-table">
-      <thead><tr><th>Size</th><th>Chest</th><th>Length</th></tr></thead>
-      <tbody>
-        <tr><td>M</td><td>40</td><td>28</td></tr>
-        <tr><td>L</td><td>42</td><td>28</td></tr>
-        <tr><td>XL</td><td>44</td><td>29</td></tr>
-        <tr><td>XXL</td><td>45/46</td><td>30/31</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
+      <div id="master-edition" class="tab-content">
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Chest</th>
+              <th>Length</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>M</td>
+              <td>40</td>
+              <td>28</td>
+            </tr>
+            <tr>
+              <td>L</td>
+              <td>42</td>
+              <td>28</td>
+            </tr>
+            <tr>
+              <td>XL</td>
+              <td>44</td>
+              <td>29</td>
+            </tr>
+            <tr>
+              <td>XXL</td>
+              <td>45/46</td>
+              <td>30/31</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
-<!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
      PRODUCT GRID
 ══════════════════════════════════════ -->
-<section class="products-section" style="padding-top: 10px; padding-bottom: 10px;">
-  <div class="product-grid" id="product-grid">
+    <section
+      class="products-section"
+      style="padding-top: 10px; padding-bottom: 10px"
+    >
+      <div class="product-grid" id="product-grid">
+        <!-- Product 1: Ball -->
+        <div class="product-card" style="animation-delay: 0.1s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(0)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-36%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_06_00-PM-300x300.png"
+              alt="Trionda FIFA World Cup Ball"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Trionda FIFA World Cup Ball</h3>
+            <div class="product-price">
+              <span class="reg-price">৳1700</span>
+              <span class="sale-price">৳1090</span>
+            </div>
+            <button
+              class="btn-add"
+              onclick="
+                addSimple(
+                  18619,
+                  'Trionda FIFA World Cup Ball',
+                  1090,
+                  'https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_06_00-PM-150x150.png',
+                  this,
+                )
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              Add to Cart
+            </button>
+            <div class="qty-ctrl" id="qty-18619">
+              <button class="qty-btn" onclick="changeQty(18619, -1)">−</button>
+              <span class="qty-val" id="qval-18619">1</span>
+              <button class="qty-btn" onclick="changeQty(18619, 1)">+</button>
+            </div>
+          </div>
+        </div>
 
-    <!-- Product 1: Ball -->
-    <div class="product-card" style="animation-delay:0.1s">
-      <div class="product-img-wrap" onclick="openLightbox(0)" style="cursor:zoom-in">
-        <span class="discount-badge">-36%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_06_00-PM-300x300.png" alt="Trionda FIFA World Cup Ball">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">Trionda FIFA World Cup Ball</h3>
-        <div class="product-price">
-          <span class="reg-price">৳1700</span>
-          <span class="sale-price">৳1090</span>
+        <!-- Product 2: France Jersey -->
+        <div class="product-card" style="animation-delay: 0.15s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(1)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-31%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_07_16-PM-300x300.png"
+              alt="France Jersey"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">
+              France Jersey (Premium) Player Edition - Thailand
+            </h3>
+            <div class="product-price">
+              <span class="reg-price">৳1800</span>
+              <span class="sale-price">৳1250</span>
+            </div>
+            <button
+              class="btn-add"
+              onclick="
+                openVariation(
+                  18608,
+                  'France Jersey (Premium) Player Edition - Thailand',
+                  1250,
+                  [
+                    { id: 18609, name: 'M', price: 1250, in_stock: true },
+                    { id: 18610, name: 'L', price: 1250, in_stock: true },
+                    { id: 18611, name: 'XL', price: 1250, in_stock: false },
+                    { id: 18612, name: 'XXL', price: 1250, in_stock: false },
+                  ],
+                  'https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_07_16-PM-300x300.png',
+                )
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              কিনুন
+            </button>
+            <div class="qty-ctrl" id="qty-18608">
+              <button class="qty-btn" onclick="changeQty(18608, -1)">−</button>
+              <span class="qty-val" id="qval-18608">1</span>
+              <button class="qty-btn" onclick="changeQty(18608, 1)">+</button>
+            </div>
+          </div>
         </div>
-        <button class="btn-add" onclick="addSimple(18619,'Trionda FIFA World Cup Ball',1090,'https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_06_00-PM-150x150.png',this)">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          Add to Cart
-        </button>
-        <div class="qty-ctrl" id="qty-18619">
-          <button class="qty-btn" onclick="changeQty(18619,-1)">−</button>
-          <span class="qty-val" id="qval-18619">1</span>
-          <button class="qty-btn" onclick="changeQty(18619,1)">+</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Product 2: France Jersey -->
-    <div class="product-card" style="animation-delay:0.15s">
-      <div class="product-img-wrap" onclick="openLightbox(1)" style="cursor:zoom-in">
-        <span class="discount-badge">-31%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_07_16-PM-300x300.png" alt="France Jersey">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">France Jersey (Premium) Player Edition - Thailand</h3>
-        <div class="product-price">
-          <span class="reg-price">৳1800</span>
-          <span class="sale-price">৳1250</span>
+        <!-- Product 3: Portugal Player Edition -->
+        <div class="product-card" style="animation-delay: 0.2s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(2)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-31%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_06_47-PM-300x300.png"
+              alt="Portugal Jersey"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">
+              Portugal Jersey (Premium) Player Edition - Thailand
+            </h3>
+            <div class="product-price">
+              <span class="reg-price">৳1800</span>
+              <span class="sale-price">৳1250</span>
+            </div>
+            <button
+              class="btn-add"
+              onclick="
+                openVariation(
+                  18597,
+                  'Portugal Jersey (Premium) Player Edition - Thailand',
+                  1250,
+                  [
+                    { id: 18598, name: 'M', price: 1250, in_stock: true },
+                    { id: 18599, name: 'L', price: 1250, in_stock: true },
+                    { id: 18600, name: 'XL', price: 1250, in_stock: true },
+                    { id: 18601, name: 'XXL', price: 1250, in_stock: true },
+                  ],
+                  'https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_06_47-PM-300x300.png',
+                )
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              কিনুন
+            </button>
+            <div class="qty-ctrl" id="qty-18597">
+              <button class="qty-btn" onclick="changeQty(18597, -1)">−</button>
+              <span class="qty-val" id="qval-18597">1</span>
+              <button class="qty-btn" onclick="changeQty(18597, 1)">+</button>
+            </div>
+          </div>
         </div>
-        <button class="btn-add" onclick="openVariation(18608,'France Jersey (Premium) Player Edition - Thailand',1250,[{id:18609,name:'M',price:1250,in_stock:true},{id:18610,name:'L',price:1250,in_stock:true},{id:18611,name:'XL',price:1250,in_stock:false},{id:18612,name:'XXL',price:1250,in_stock:false}],'https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_07_16-PM-300x300.png')">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          কিনুন
-        </button>
-        <div class="qty-ctrl" id="qty-18608">
-          <button class="qty-btn" onclick="changeQty(18608,-1)">−</button>
-          <span class="qty-val" id="qval-18608">1</span>
-          <button class="qty-btn" onclick="changeQty(18608,1)">+</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Product 3: Portugal Player Edition -->
-    <div class="product-card" style="animation-delay:0.2s">
-      <div class="product-img-wrap" onclick="openLightbox(2)" style="cursor:zoom-in">
-        <span class="discount-badge">-31%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_06_47-PM-300x300.png" alt="Portugal Jersey">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">Portugal Jersey (Premium) Player Edition - Thailand</h3>
-        <div class="product-price">
-          <span class="reg-price">৳1800</span>
-          <span class="sale-price">৳1250</span>
+        <!-- Product 4: Portugal Master (stock out) -->
+        <div class="product-card" style="animation-delay: 0.25s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(3)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-35%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/Front-Portugal-Master-Edition-300x300.png"
+              alt="Portugal Master Edition"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Portugal Master Edition Jersey</h3>
+            <div class="product-price">
+              <span class="reg-price">৳1100</span>
+              <span class="sale-price">৳715</span>
+            </div>
+            <button class="btn-sold" disabled>স্টক আউট</button>
+          </div>
         </div>
-        <button class="btn-add" onclick="openVariation(18597,'Portugal Jersey (Premium) Player Edition - Thailand',1250,[{id:18598,name:'M',price:1250,in_stock:true},{id:18599,name:'L',price:1250,in_stock:true},{id:18600,name:'XL',price:1250,in_stock:true},{id:18601,name:'XXL',price:1250,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-17-2026-03_06_47-PM-300x300.png')">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          কিনুন
-        </button>
-        <div class="qty-ctrl" id="qty-18597">
-          <button class="qty-btn" onclick="changeQty(18597,-1)">−</button>
-          <span class="qty-val" id="qval-18597">1</span>
-          <button class="qty-btn" onclick="changeQty(18597,1)">+</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Product 4: Portugal Master (stock out) -->
-    <div class="product-card" style="animation-delay:0.25s">
-      <div class="product-img-wrap" onclick="openLightbox(3)" style="cursor:zoom-in">
-        <span class="discount-badge">-35%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Front-Portugal-Master-Edition-300x300.png" alt="Portugal Master Edition">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">Portugal Master Edition Jersey</h3>
-        <div class="product-price">
-          <span class="reg-price">৳1100</span>
-          <span class="sale-price">৳715</span>
+        <!-- Product 5: Spain Master -->
+        <div class="product-card" style="animation-delay: 0.3s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(4)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-35%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/Spain-Master-Edition-Front-300x300.png"
+              alt="Spain Master Edition"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Spain Master Edition Jersey</h3>
+            <div class="product-price">
+              <span class="reg-price">৳1100</span>
+              <span class="sale-price">৳715</span>
+            </div>
+            <button
+              class="btn-add"
+              onclick="
+                openVariation(
+                  17862,
+                  'Spain Master Edition Jersey',
+                  715,
+                  [
+                    { id: 17863, name: 'M', price: 715, in_stock: false },
+                    { id: 17864, name: 'L', price: 715, in_stock: true },
+                    { id: 17865, name: 'XL', price: 715, in_stock: true },
+                    { id: 17866, name: 'XXL', price: 715, in_stock: false },
+                  ],
+                  'https://shop.prodhan.com/wp-content/uploads/2026/05/Spain-Master-Edition-Front-300x300.png',
+                )
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              কিনুন
+            </button>
+            <div class="qty-ctrl" id="qty-17862">
+              <button class="qty-btn" onclick="changeQty(17862, -1)">−</button>
+              <span class="qty-val" id="qval-17862">1</span>
+              <button class="qty-btn" onclick="changeQty(17862, 1)">+</button>
+            </div>
+          </div>
         </div>
-        <button class="btn-sold" disabled>স্টক আউট</button>
-      </div>
-    </div>
 
-    <!-- Product 5: Spain Master -->
-    <div class="product-card" style="animation-delay:0.3s">
-      <div class="product-img-wrap" onclick="openLightbox(4)" style="cursor:zoom-in">
-        <span class="discount-badge">-35%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Spain-Master-Edition-Front-300x300.png" alt="Spain Master Edition">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">Spain Master Edition Jersey</h3>
-        <div class="product-price">
-          <span class="reg-price">৳1100</span>
-          <span class="sale-price">৳715</span>
+        <!-- Product 6: Brazil Master -->
+        <div class="product-card" style="animation-delay: 0.35s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(5)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-35%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-Master-Edition-Front-300x300.png"
+              alt="Brazil Master Edition"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Brazil Master Edition Jersey</h3>
+            <div class="product-price">
+              <span class="reg-price">৳1100</span>
+              <span class="sale-price">৳715</span>
+            </div>
+            <button
+              class="btn-add"
+              onclick="
+                openVariation(
+                  17852,
+                  'Brazil Master Edition Jersey',
+                  715,
+                  [
+                    { id: 17853, name: 'M', price: 715, in_stock: false },
+                    { id: 17854, name: 'L', price: 715, in_stock: true },
+                    { id: 17855, name: 'XL', price: 715, in_stock: true },
+                    { id: 17856, name: 'XXL', price: 715, in_stock: true },
+                  ],
+                  'https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-Master-Edition-Front-300x300.png',
+                )
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              কিনুন
+            </button>
+            <div class="qty-ctrl" id="qty-17852">
+              <button class="qty-btn" onclick="changeQty(17852, -1)">−</button>
+              <span class="qty-val" id="qval-17852">1</span>
+              <button class="qty-btn" onclick="changeQty(17852, 1)">+</button>
+            </div>
+          </div>
         </div>
-        <button class="btn-add" onclick="openVariation(17862,'Spain Master Edition Jersey',715,[{id:17863,name:'M',price:715,in_stock:false},{id:17864,name:'L',price:715,in_stock:true},{id:17865,name:'XL',price:715,in_stock:true},{id:17866,name:'XXL',price:715,in_stock:false}],'https://shop.prodhan.com/wp-content/uploads/2026/05/Spain-Master-Edition-Front-300x300.png')">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          কিনুন
-        </button>
-        <div class="qty-ctrl" id="qty-17862">
-          <button class="qty-btn" onclick="changeQty(17862,-1)">−</button>
-          <span class="qty-val" id="qval-17862">1</span>
-          <button class="qty-btn" onclick="changeQty(17862,1)">+</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Product 6: Brazil Master -->
-    <div class="product-card" style="animation-delay:0.35s">
-      <div class="product-img-wrap" onclick="openLightbox(5)" style="cursor:zoom-in">
-        <span class="discount-badge">-35%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-Master-Edition-Front-300x300.png" alt="Brazil Master Edition">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">Brazil Master Edition Jersey</h3>
-        <div class="product-price">
-          <span class="reg-price">৳1100</span>
-          <span class="sale-price">৳715</span>
+        <!-- Product 7: Argentina Master -->
+        <div class="product-card" style="animation-delay: 0.4s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(6)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-35%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-11-2026-07_29_39-PM-300x300.png"
+              alt="Argentina Master Edition"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">Argentina Master Edition Jersey</h3>
+            <div class="product-price">
+              <span class="reg-price">৳1100</span>
+              <span class="sale-price">৳715</span>
+            </div>
+            <button
+              class="btn-add"
+              onclick="
+                openVariation(
+                  17716,
+                  'Argentina Master Edition Jersey',
+                  715,
+                  [
+                    { id: 17717, name: 'M', price: 715, in_stock: false },
+                    { id: 17718, name: 'L', price: 715, in_stock: true },
+                    { id: 17719, name: 'XL', price: 715, in_stock: true },
+                    { id: 17720, name: 'XXL', price: 715, in_stock: true },
+                  ],
+                  'https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-11-2026-07_29_39-PM-300x300.png',
+                )
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              কিনুন
+            </button>
+            <div class="qty-ctrl" id="qty-17716">
+              <button class="qty-btn" onclick="changeQty(17716, -1)">−</button>
+              <span class="qty-val" id="qval-17716">1</span>
+              <button class="qty-btn" onclick="changeQty(17716, 1)">+</button>
+            </div>
+          </div>
         </div>
-        <button class="btn-add" onclick="openVariation(17852,'Brazil Master Edition Jersey',715,[{id:17853,name:'M',price:715,in_stock:false},{id:17854,name:'L',price:715,in_stock:true},{id:17855,name:'XL',price:715,in_stock:true},{id:17856,name:'XXL',price:715,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-Master-Edition-Front-300x300.png')">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          কিনুন
-        </button>
-        <div class="qty-ctrl" id="qty-17852">
-          <button class="qty-btn" onclick="changeQty(17852,-1)">−</button>
-          <span class="qty-val" id="qval-17852">1</span>
-          <button class="qty-btn" onclick="changeQty(17852,1)">+</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Product 7: Argentina Master -->
-    <div class="product-card" style="animation-delay:0.4s">
-      <div class="product-img-wrap" onclick="openLightbox(6)" style="cursor:zoom-in">
-        <span class="discount-badge">-35%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-11-2026-07_29_39-PM-300x300.png" alt="Argentina Master Edition">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">Argentina Master Edition Jersey</h3>
-        <div class="product-price">
-          <span class="reg-price">৳1100</span>
-          <span class="sale-price">৳715</span>
+        <!-- Product 8: Arg+Arg Combo -->
+        <div class="product-card" style="animation-delay: 0.45s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(7)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-31%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg"
+              alt="Arg+Arg Combo"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">
+              Arg+Arg (Premium) Player Edition Combo - Thailand
+            </h3>
+            <div class="product-price">
+              <span class="reg-price">৳3600</span>
+              <span class="sale-price">৳2500</span>
+            </div>
+            <button
+              class="btn-add"
+              onclick="
+                openVariation(
+                  17147,
+                  'Arg+Arg (Premium) Player Edition Combo - Thailand',
+                  2500,
+                  [
+                    { id: 17148, name: 'M', price: 2500, in_stock: true },
+                    { id: 17149, name: 'L', price: 2500, in_stock: true },
+                    { id: 17150, name: 'XL', price: 2500, in_stock: true },
+                    { id: 17151, name: '2XL', price: 2500, in_stock: true },
+                  ],
+                  'https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg',
+                )
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              কিনুন
+            </button>
+            <div class="qty-ctrl" id="qty-17147">
+              <button class="qty-btn" onclick="changeQty(17147, -1)">−</button>
+              <span class="qty-val" id="qval-17147">1</span>
+              <button class="qty-btn" onclick="changeQty(17147, 1)">+</button>
+            </div>
+          </div>
         </div>
-        <button class="btn-add" onclick="openVariation(17716,'Argentina Master Edition Jersey',715,[{id:17717,name:'M',price:715,in_stock:false},{id:17718,name:'L',price:715,in_stock:true},{id:17719,name:'XL',price:715,in_stock:true},{id:17720,name:'XXL',price:715,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/ChatGPT-Image-May-11-2026-07_29_39-PM-300x300.png')">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          কিনুন
-        </button>
-        <div class="qty-ctrl" id="qty-17716">
-          <button class="qty-btn" onclick="changeQty(17716,-1)">−</button>
-          <span class="qty-val" id="qval-17716">1</span>
-          <button class="qty-btn" onclick="changeQty(17716,1)">+</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Product 8: Arg+Arg Combo -->
-    <div class="product-card" style="animation-delay:0.45s">
-      <div class="product-img-wrap" onclick="openLightbox(7)" style="cursor:zoom-in">
-        <span class="discount-badge">-31%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg" alt="Arg+Arg Combo">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">Arg+Arg (Premium) Player Edition Combo - Thailand</h3>
-        <div class="product-price">
-          <span class="reg-price">৳3600</span>
-          <span class="sale-price">৳2500</span>
+        <!-- Product 9: Br+Br Combo -->
+        <div class="product-card" style="animation-delay: 0.5s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(8)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-31%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/এই_জার্সি_টাকে_২টার_কম্বো_202605071557-300x300.jpeg"
+              alt="Br+Br Combo"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">
+              Br+Br (Premium) Player Edition Combo - Thailand
+            </h3>
+            <div class="product-price">
+              <span class="reg-price">৳3600</span>
+              <span class="sale-price">৳2500</span>
+            </div>
+            <button
+              class="btn-add"
+              onclick="
+                openVariation(
+                  17141,
+                  'Br+Br (Premium) Player Edition Combo - Thailand',
+                  2500,
+                  [
+                    { id: 17142, name: 'M', price: 2500, in_stock: true },
+                    { id: 17143, name: 'L', price: 2500, in_stock: true },
+                    { id: 17144, name: 'XL', price: 2500, in_stock: true },
+                    { id: 17145, name: '2XL', price: 2500, in_stock: true },
+                  ],
+                  'https://shop.prodhan.com/wp-content/uploads/2026/05/\u098f\u0987_\u099c\u09be\u09b0\u09cd\u09b8\u09bf_\u099f\u09be\u0995\u09c7_\u09e8\u099f\u09be\u09b0_\u0995\u09ae\u09cd\u09ac\u09cb_202605071557-300x300.jpeg',
+                )
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              কিনুন
+            </button>
+            <div class="qty-ctrl" id="qty-17141">
+              <button class="qty-btn" onclick="changeQty(17141, -1)">−</button>
+              <span class="qty-val" id="qval-17141">1</span>
+              <button class="qty-btn" onclick="changeQty(17141, 1)">+</button>
+            </div>
+          </div>
         </div>
-        <button class="btn-add" onclick="openVariation(17147,'Arg+Arg (Premium) Player Edition Combo - Thailand',2500,[{id:17148,name:'M',price:2500,in_stock:true},{id:17149,name:'L',price:2500,in_stock:true},{id:17150,name:'XL',price:2500,in_stock:true},{id:17151,name:'2XL',price:2500,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg')">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          কিনুন
-        </button>
-        <div class="qty-ctrl" id="qty-17147">
-          <button class="qty-btn" onclick="changeQty(17147,-1)">−</button>
-          <span class="qty-val" id="qval-17147">1</span>
-          <button class="qty-btn" onclick="changeQty(17147,1)">+</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Product 9: Br+Br Combo -->
-    <div class="product-card" style="animation-delay:0.5s">
-      <div class="product-img-wrap" onclick="openLightbox(8)" style="cursor:zoom-in">
-        <span class="discount-badge">-31%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/এই_জার্সি_টাকে_২টার_কম্বো_202605071557-300x300.jpeg" alt="Br+Br Combo">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">Br+Br (Premium) Player Edition Combo - Thailand</h3>
-        <div class="product-price">
-          <span class="reg-price">৳3600</span>
-          <span class="sale-price">৳2500</span>
+        <!-- Product 10: Arg+Br Combo -->
+        <div class="product-card" style="animation-delay: 0.55s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(9)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-31%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/এই_২_টা_জার্সি_একত্র_202605071557-300x300.jpeg"
+              alt="Arg+Br Combo"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">
+              Arg+Br (Premium) Player Edition Combo - Thailand
+            </h3>
+            <div class="product-price">
+              <span class="reg-price">৳3600</span>
+              <span class="sale-price">৳2500</span>
+            </div>
+            <button
+              class="btn-add"
+              onclick="
+                openVariation(
+                  17129,
+                  'Arg+Br (Premium) Player Edition Combo - Thailand',
+                  2500,
+                  [
+                    { id: 17130, name: 'M', price: 2500, in_stock: true },
+                    { id: 17131, name: 'L', price: 2500, in_stock: true },
+                    { id: 17132, name: 'XL', price: 2500, in_stock: true },
+                    { id: 17133, name: '2XL', price: 2500, in_stock: true },
+                  ],
+                  'https://shop.prodhan.com/wp-content/uploads/2026/05/\u098f\u0987_\u09e8_\u099f\u09be_\u099c\u09be\u09b0\u09cd\u09b8\u09bf_\u098f\u0995\u09a4\u09cd\u09b0_202605071557-300x300.jpeg',
+                )
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              কিনুন
+            </button>
+            <div class="qty-ctrl" id="qty-17129">
+              <button class="qty-btn" onclick="changeQty(17129, -1)">−</button>
+              <span class="qty-val" id="qval-17129">1</span>
+              <button class="qty-btn" onclick="changeQty(17129, 1)">+</button>
+            </div>
+          </div>
         </div>
-        <button class="btn-add" onclick="openVariation(17141,'Br+Br (Premium) Player Edition Combo - Thailand',2500,[{id:17142,name:'M',price:2500,in_stock:true},{id:17143,name:'L',price:2500,in_stock:true},{id:17144,name:'XL',price:2500,in_stock:true},{id:17145,name:'2XL',price:2500,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/\u098f\u0987_\u099c\u09be\u09b0\u09cd\u09b8\u09bf_\u099f\u09be\u0995\u09c7_\u09e8\u099f\u09be\u09b0_\u0995\u09ae\u09cd\u09ac\u09cb_202605071557-300x300.jpeg')">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          কিনুন
-        </button>
-        <div class="qty-ctrl" id="qty-17141">
-          <button class="qty-btn" onclick="changeQty(17141,-1)">−</button>
-          <span class="qty-val" id="qval-17141">1</span>
-          <button class="qty-btn" onclick="changeQty(17141,1)">+</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Product 10: Arg+Br Combo -->
-    <div class="product-card" style="animation-delay:0.55s">
-      <div class="product-img-wrap" onclick="openLightbox(9)" style="cursor:zoom-in">
-        <span class="discount-badge">-31%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/এই_২_টা_জার্সি_একত্র_202605071557-300x300.jpeg" alt="Arg+Br Combo">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">Arg+Br (Premium) Player Edition Combo - Thailand</h3>
-        <div class="product-price">
-          <span class="reg-price">৳3600</span>
-          <span class="sale-price">৳2500</span>
+        <!-- Product 11: Brazil Player Edition -->
+        <div class="product-card" style="animation-delay: 0.6s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(10)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-31%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-300x300.jpeg"
+              alt="Brazil Player Edition"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">
+              Brazil Jersey (Premium) Player Edition - Thailand
+            </h3>
+            <div class="product-price">
+              <span class="reg-price">৳1800</span>
+              <span class="sale-price">৳1250</span>
+            </div>
+            <button
+              class="btn-add"
+              onclick="
+                openVariation(
+                  17003,
+                  'Brazil Jersey (Premium) Player Edition - Thailand',
+                  1250,
+                  [
+                    { id: 17004, name: 'M', price: 1250, in_stock: true },
+                    { id: 17005, name: 'L', price: 1250, in_stock: true },
+                    { id: 17006, name: 'XL', price: 1250, in_stock: true },
+                    { id: 17007, name: '2XL', price: 1250, in_stock: false },
+                  ],
+                  'https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-300x300.jpeg',
+                )
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              কিনুন
+            </button>
+            <div class="qty-ctrl" id="qty-17003">
+              <button class="qty-btn" onclick="changeQty(17003, -1)">−</button>
+              <span class="qty-val" id="qval-17003">1</span>
+              <button class="qty-btn" onclick="changeQty(17003, 1)">+</button>
+            </div>
+          </div>
         </div>
-        <button class="btn-add" onclick="openVariation(17129,'Arg+Br (Premium) Player Edition Combo - Thailand',2500,[{id:17130,name:'M',price:2500,in_stock:true},{id:17131,name:'L',price:2500,in_stock:true},{id:17132,name:'XL',price:2500,in_stock:true},{id:17133,name:'2XL',price:2500,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/\u098f\u0987_\u09e8_\u099f\u09be_\u099c\u09be\u09b0\u09cd\u09b8\u09bf_\u098f\u0995\u09a4\u09cd\u09b0_202605071557-300x300.jpeg')">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          কিনুন
-        </button>
-        <div class="qty-ctrl" id="qty-17129">
-          <button class="qty-btn" onclick="changeQty(17129,-1)">−</button>
-          <span class="qty-val" id="qval-17129">1</span>
-          <button class="qty-btn" onclick="changeQty(17129,1)">+</button>
-        </div>
-      </div>
-    </div>
 
-    <!-- Product 11: Brazil Player Edition -->
-    <div class="product-card" style="animation-delay:0.6s">
-      <div class="product-img-wrap" onclick="openLightbox(10)" style="cursor:zoom-in">
-        <span class="discount-badge">-31%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-300x300.jpeg" alt="Brazil Player Edition">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">Brazil Jersey (Premium) Player Edition - Thailand</h3>
-        <div class="product-price">
-          <span class="reg-price">৳1800</span>
-          <span class="sale-price">৳1250</span>
+        <!-- Product 12: Argentine Player Edition -->
+        <div class="product-card" style="animation-delay: 0.65s">
+          <div
+            class="product-img-wrap"
+            onclick="openLightbox(11)"
+            style="cursor: zoom-in"
+          >
+            <span class="discount-badge">-31%</span>
+            <img
+              src="https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg"
+              alt="Argentine Player Edition"
+            />
+          </div>
+          <div class="product-body">
+            <h3 class="product-name">
+              Argentine Jersey (Premium) Player Edition - Thailand
+            </h3>
+            <div class="product-price">
+              <span class="reg-price">৳1800</span>
+              <span class="sale-price">৳1250</span>
+            </div>
+            <button
+              class="btn-add"
+              onclick="
+                openVariation(
+                  16995,
+                  'Argentine Jersey (Premium) Player Edition - Thailand',
+                  1250,
+                  [
+                    { id: 16998, name: 'M', price: 1250, in_stock: false },
+                    { id: 16999, name: 'L', price: 1250, in_stock: true },
+                    { id: 17000, name: 'XL', price: 1250, in_stock: true },
+                    { id: 17001, name: '2XL', price: 1250, in_stock: true },
+                  ],
+                  'https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg',
+                )
+              "
+            >
+              <svg
+                viewBox="0 0 24 24"
+                width="14"
+                height="14"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              >
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path
+                  d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+                />
+              </svg>
+              কিনুন
+            </button>
+            <div class="qty-ctrl" id="qty-16995">
+              <button class="qty-btn" onclick="changeQty(16995, -1)">−</button>
+              <span class="qty-val" id="qval-16995">1</span>
+              <button class="qty-btn" onclick="changeQty(16995, 1)">+</button>
+            </div>
+          </div>
         </div>
-        <button class="btn-add" onclick="openVariation(17003,'Brazil Jersey (Premium) Player Edition - Thailand',1250,[{id:17004,name:'M',price:1250,in_stock:true},{id:17005,name:'L',price:1250,in_stock:true},{id:17006,name:'XL',price:1250,in_stock:true},{id:17007,name:'2XL',price:1250,in_stock:false}],'https://shop.prodhan.com/wp-content/uploads/2026/05/Brazil-300x300.jpeg')">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          কিনুন
-        </button>
-        <div class="qty-ctrl" id="qty-17003">
-          <button class="qty-btn" onclick="changeQty(17003,-1)">−</button>
-          <span class="qty-val" id="qval-17003">1</span>
-          <button class="qty-btn" onclick="changeQty(17003,1)">+</button>
-        </div>
       </div>
-    </div>
+      <!-- /product-grid -->
+    </section>
 
-    <!-- Product 12: Argentine Player Edition -->
-    <div class="product-card" style="animation-delay:0.65s">
-      <div class="product-img-wrap" onclick="openLightbox(11)" style="cursor:zoom-in">
-        <span class="discount-badge">-31%</span>
-        <img src="https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg" alt="Argentine Player Edition">
-      </div>
-      <div class="product-body">
-        <h3 class="product-name">Argentine Jersey (Premium) Player Edition - Thailand</h3>
-        <div class="product-price">
-          <span class="reg-price">৳1800</span>
-          <span class="sale-price">৳1250</span>
-        </div>
-        <button class="btn-add" onclick="openVariation(16995,'Argentine Jersey (Premium) Player Edition - Thailand',1250,[{id:16998,name:'M',price:1250,in_stock:false},{id:16999,name:'L',price:1250,in_stock:true},{id:17000,name:'XL',price:1250,in_stock:true},{id:17001,name:'2XL',price:1250,in_stock:true}],'https://shop.prodhan.com/wp-content/uploads/2026/05/Argentina-Solid-300x300.jpeg')">
-          <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          কিনুন
-        </button>
-        <div class="qty-ctrl" id="qty-16995">
-          <button class="qty-btn" onclick="changeQty(16995,-1)">−</button>
-          <span class="qty-val" id="qval-16995">1</span>
-          <button class="qty-btn" onclick="changeQty(16995,1)">+</button>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- /product-grid -->
-</section>
-
-<!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
      CHECKOUT SECTION
 ══════════════════════════════════════ -->
-<section class="checkout-section" id="checkout-section">
-  <div class="checkout-inner">
-
-    <!-- Left: Customer info -->
-    <div class="checkout-col">
-      <div class="checkout-heading">আপনার তথ্য দিন:</div>
-      <div class="form-group">
-        <input type="text" id="cust-name" class="form-input" placeholder="আপনার নাম" required>
-      </div>
-      <div class="form-group">
-        <input type="tel" id="cust-phone" class="form-input" placeholder="মোবাইল নাম্বার" required>
-      </div>
-      <div class="form-group">
-        <textarea id="cust-address" class="form-input form-textarea" rows="3" placeholder="সম্পূর্ণ ঠিকানা" required></textarea>
-      </div>
-    </div>
-
-    <!-- Right: Delivery + Order summary -->
-    <div class="checkout-col">
-      <div class="checkout-heading">ডেলিভারি এরিয়া:</div>
-      <div class="delivery-options">
-        <label class="delivery-label selected" id="del-dhaka">
-          <input type="radio" name="delivery" value="inside" data-cost="60" checked onchange="updateDelivery(this)">
-          <div class="delivery-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+    <section class="checkout-section" id="checkout-section">
+      <div class="checkout-inner">
+        <!-- Left: Customer info -->
+        <div class="checkout-col">
+          <div class="checkout-heading">আপনার তথ্য দিন:</div>
+          <div class="form-group">
+            <input
+              type="text"
+              id="cust-name"
+              class="form-input"
+              placeholder="আপনার নাম"
+              required
+            />
           </div>
-          <div class="delivery-text">
-            <strong>ঢাকার ভিতরে</strong>
-            <span>চার্জ প্রযোজ্য হবে - <span class="del-cost">60</span> টাকা</span>
+          <div class="form-group">
+            <input
+              type="tel"
+              id="cust-phone"
+              class="form-input"
+              placeholder="মোবাইল নাম্বার"
+              required
+            />
           </div>
-        </label>
-        <label class="delivery-label" id="del-outside">
-          <input type="radio" name="delivery" value="outside" data-cost="110" onchange="updateDelivery(this)">
-          <div class="delivery-icon">
-            <svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+          <div class="form-group">
+            <textarea
+              id="cust-address"
+              class="form-input form-textarea"
+              rows="3"
+              placeholder="সম্পূর্ণ ঠিকানা"
+              required
+            ></textarea>
           </div>
-          <div class="delivery-text">
-            <strong>ঢাকার বাহিরে</strong>
-            <span>চার্জ প্রযোজ্য হবে - <span class="del-cost">110</span> টাকা</span>
+        </div>
+
+        <!-- Right: Delivery + Order summary -->
+        <div class="checkout-col">
+          <div class="checkout-heading">ডেলিভারি এরিয়া:</div>
+          <div class="delivery-options">
+            <label class="delivery-label selected" id="del-dhaka">
+              <input
+                type="radio"
+                name="delivery"
+                value="inside"
+                data-cost="60"
+                checked
+                onchange="updateDelivery(this)"
+              />
+              <div class="delivery-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+                  />
+                </svg>
+              </div>
+              <div class="delivery-text">
+                <strong>ঢাকার ভিতরে</strong>
+                <span
+                  >চার্জ প্রযোজ্য হবে -
+                  <span class="del-cost">60</span> টাকা</span
+                >
+              </div>
+            </label>
+            <label class="delivery-label" id="del-outside">
+              <input
+                type="radio"
+                name="delivery"
+                value="outside"
+                data-cost="110"
+                onchange="updateDelivery(this)"
+              />
+              <div class="delivery-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"
+                  />
+                </svg>
+              </div>
+              <div class="delivery-text">
+                <strong>ঢাকার বাহিরে</strong>
+                <span
+                  >চার্জ প্রযোজ্য হবে -
+                  <span class="del-cost">110</span> টাকা</span
+                >
+              </div>
+            </label>
           </div>
-        </label>
+
+          <div class="summary-heading">অর্ডার সামারি:</div>
+          <table class="order-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody id="cart-items-tbody">
+              <tr>
+                <td colspan="2" class="empty-cart-msg">
+                  কার্টে কোনো প্রোডাক্ট নেই।
+                </td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr>
+                <td>Subtotal</td>
+                <td>৳<span id="summary-sub">0.00</span></td>
+              </tr>
+              <tr>
+                <td>Delivery</td>
+                <td>৳<span id="summary-del">0.00</span></td>
+              </tr>
+              <tr class="total-row">
+                <td>Total</td>
+                <td>৳<span id="summary-total">0.00</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <button
+            class="btn-order"
+            id="btn-order-desktop"
+            onclick="placeOrder()"
+            disabled
+          >
+            অর্ডার করুন ৳<span id="btn-total-val">0.00</span>
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </div>
       </div>
+      <!-- /checkout-inner -->
+    </section>
 
-      <div class="summary-heading">অর্ডার সামারি:</div>
-      <table class="order-table">
-        <thead><tr><th>Product</th><th>Subtotal</th></tr></thead>
-        <tbody id="cart-items-tbody">
-          <tr><td colspan="2" class="empty-cart-msg">কার্টে কোনো প্রোডাক্ট নেই।</td></tr>
-        </tbody>
-        <tbody>
-          <tr><td>Subtotal</td><td>৳<span id="summary-sub">0.00</span></td></tr>
-          <tr><td>Delivery</td><td>৳<span id="summary-del">0.00</span></td></tr>
-          <tr class="total-row"><td>Total</td><td>৳<span id="summary-total">0.00</span></td></tr>
-        </tbody>
-      </table>
-
-      <button class="btn-order" id="btn-order-desktop" onclick="placeOrder()" disabled>
-        অর্ডার করুন ৳<span id="btn-total-val">0.00</span>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    <!-- Mobile sticky -->
+    <div class="sticky-bar" id="sticky-bar">
+      <div class="sticky-total">
+        <svg
+          width="22"
+          height="22"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="9" cy="21" r="1" />
+          <circle cx="20" cy="21" r="1" />
+          <path
+            d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"
+          />
+        </svg>
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+            margin-left: 5px;
+          "
+        >
+          <span class="sticky-total-label">মোট</span>
+          <span class="sticky-total-val"
+            >৳<span id="sticky-total-val">0.00</span></span
+          >
+        </div>
+      </div>
+      <button
+        class="btn-sticky"
+        id="btn-sticky"
+        onclick="placeOrder()"
+        disabled
+      >
+        অর্ডার করুন
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <line x1="5" y1="12" x2="19" y2="12" />
+          <polyline points="12 5 19 12 12 19" />
+        </svg>
       </button>
     </div>
 
-  </div><!-- /checkout-inner -->
-</section>
-
-<!-- Mobile sticky -->
-<div class="sticky-bar" id="sticky-bar">
-  <div class="sticky-total">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-    <div style="display:flex;flex-direction:column;line-height:1.1;margin-left:5px;">
-      <span class="sticky-total-label">মোট</span>
-      <span class="sticky-total-val">৳<span id="sticky-total-val">0.00</span></span>
-    </div>
-  </div>
-  <button class="btn-sticky" id="btn-sticky" onclick="placeOrder()" disabled>
-    অর্ডার করুন
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-  </button>
-</div>
-
-<!-- ══════════════════════════════════════
+    <!-- ══════════════════════════════════════
      VARIATION MODAL
 ══════════════════════════════════════ -->
-<div class="modal-overlay" id="variation-modal">
-  <div class="modal-box">
-    <div class="modal-header">
-      <h3 class="modal-title">পছন্দের অপশনটি সিলেক্ট করুন</h3>
-      <button class="modal-close" onclick="closeModal('variation-modal')">✕</button>
-    </div>
-    <div class="variation-list" id="variation-list"></div>
-    <div style="border-top:1px dashed #cbd5e1; padding-top:14px; margin-top:4px;">
-      <button class="modal-order-btn" onclick="confirmVariation()">
-        অর্ডার করুন
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </button>
-    </div>
-  </div>
-</div>
-
-<!-- Success Modal -->
-<div class="modal-overlay success-modal" id="success-modal">
-  <div class="modal-box">
-    <div class="success-icon">✓</div>
-    <h3>অর্ডার সফল হয়েছে!</h3>
-    <p style="margin-top:8px;">আপনার অর্ডারটি গ্রহণ করা হয়েছে। শীঘ্রই আমাদের টিম আপনার সাথে যোগাযোগ করবে।</p>
-    <button class="btn-add" style="margin-top:20px;padding:12px;" onclick="closeModal('success-modal')">ঠিক আছে</button>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
-     IMAGE LIGHTBOX
-══════════════════════════════════════ -->
-<div class="lightbox-overlay" id="lightbox" onclick="lbOverlayClick(event)">
-  <div class="lightbox-card">
-    <button class="lightbox-close" onclick="closeLightbox()">✕</button>
-    <div class="lightbox-img-wrap">
-      <img id="lb-img" src="" alt="">
-    </div>
-    <div id="lb-dots" class="lb-dots"></div>
-    <div class="lightbox-info">
-      <div class="lightbox-name" id="lb-name"></div>
-      <div class="lightbox-prices">
-        <span class="lb-reg" id="lb-reg"></span>
-        <span class="lb-sale" id="lb-sale"></span>
+    <div class="modal-overlay" id="variation-modal">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 class="modal-title">পছন্দের অপশনটি সিলেক্ট করুন</h3>
+          <button class="modal-close" onclick="closeModal('variation-modal')">
+            ✕
+          </button>
+        </div>
+        <div class="variation-list" id="variation-list"></div>
+        <div
+          style="
+            border-top: 1px dashed #cbd5e1;
+            padding-top: 14px;
+            margin-top: 4px;
+          "
+        >
+          <button class="modal-order-btn" onclick="confirmVariation()">
+            অর্ডার করুন
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
-    <div class="lightbox-nav" id="lb-nav">
-      <button class="lb-arrow" onclick="lbMove(-1)">&#8249;</button>
-      <span class="lb-counter" id="lb-counter">1 / 1</span>
-      <button class="lb-arrow" onclick="lbMove(1)">&#8250;</button>
-    </div>
-  </div>
-</div>
 
-<!-- ══════════════════════════════════════
+    <!-- Success Modal -->
+    <div class="modal-overlay success-modal" id="success-modal">
+      <div class="modal-box">
+        <div class="success-icon">✓</div>
+        <h3>অর্ডার সফল হয়েছে!</h3>
+        <p style="margin-top: 8px">
+          আপনার অর্ডারটি গ্রহণ করা হয়েছে। শীঘ্রই আমাদের টিম আপনার সাথে যোগাযোগ
+          করবে।
+        </p>
+        <button
+          class="btn-add"
+          style="margin-top: 20px; padding: 12px"
+          onclick="closeModal('success-modal')"
+        >
+          ঠিক আছে
+        </button>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+     IMAGE LIGHTBOX
+══════════════════════════════════════ -->
+    <div class="lightbox-overlay" id="lightbox" onclick="lbOverlayClick(event)">
+      <div class="lightbox-card">
+        <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+        <div class="lightbox-img-wrap">
+          <img id="lb-img" src="" alt="" />
+        </div>
+        <div id="lb-dots" class="lb-dots"></div>
+        <div class="lightbox-info">
+          <div class="lightbox-name" id="lb-name"></div>
+          <div class="lightbox-prices">
+            <span class="lb-reg" id="lb-reg"></span>
+            <span class="lb-sale" id="lb-sale"></span>
+          </div>
+        </div>
+        <div class="lightbox-nav" id="lb-nav">
+          <button class="lb-arrow" onclick="lbMove(-1)">&#8249;</button>
+          <span class="lb-counter" id="lb-counter">1 / 1</span>
+          <button class="lb-arrow" onclick="lbMove(1)">&#8250;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
      JAVASCRIPT
 ══════════════════════════════════════ -->
-<script>
-/* ── CART STATE ── */
-let cart = {}; // { variantId: { name, price, qty } }
-let deliveryCost = 60;
-let pendingVariation = null; // { parentId, name, variants[] }
-let selectedVariantId = null;
+    <script>
+      /* ── CART STATE ── */
+      let cart = {}; // { variantId: { name, price, qty } }
+      let deliveryCost = 60;
+      let pendingVariation = null; // { parentId, name, variants[] }
+      let selectedVariantId = null;
 
-/* ── COUNTDOWN TIMER ── */
-(function startCountdown() {
-  const KEY_TARGET = 'jerseyTarget_v3', KEY_RESET = 'jerseyReset_v3';
-  let target = localStorage.getItem(KEY_TARGET);
-  let reset  = localStorage.getItem(KEY_RESET);
-  const now  = Date.now();
+      /* ── COUNTDOWN TIMER ── */
+      (function startCountdown() {
+        const KEY_TARGET = "jerseyTarget_v3",
+          KEY_RESET = "jerseyReset_v3";
+        let target = localStorage.getItem(KEY_TARGET);
+        let reset = localStorage.getItem(KEY_RESET);
+        const now = Date.now();
 
-  if (!target || !reset || now > +reset) {
-    const mins = Math.floor(Math.random() * 15) + 15;
-    const secs = Math.floor(Math.random() * 60);
-    target = now + (mins * 60 + secs) * 1000;
-    reset  = now + 30 * 60 * 1000;
-    localStorage.setItem(KEY_TARGET, target);
-    localStorage.setItem(KEY_RESET, reset);
-  }
+        if (!target || !reset || now > +reset) {
+          const mins = Math.floor(Math.random() * 15) + 15;
+          const secs = Math.floor(Math.random() * 60);
+          target = now + (mins * 60 + secs) * 1000;
+          reset = now + 30 * 60 * 1000;
+          localStorage.setItem(KEY_TARGET, target);
+          localStorage.setItem(KEY_RESET, reset);
+        }
 
-  function tick() {
-    const diff = +target - Date.now();
-    if (diff <= 0 || Date.now() > +reset) {
-      localStorage.removeItem(KEY_TARGET);
-      localStorage.removeItem(KEY_RESET);
-      startCountdown();
-      return;
-    }
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('cd-days').textContent    = String(d).padStart(2,'0');
-    document.getElementById('cd-hours').textContent   = String(h).padStart(2,'0');
-    document.getElementById('cd-minutes').textContent = String(m).padStart(2,'0');
-    document.getElementById('cd-seconds').textContent = String(s).padStart(2,'0');
-  }
-  tick();
-  setInterval(tick, 1000);
-})();
+        function tick() {
+          const diff = +target - Date.now();
+          if (diff <= 0 || Date.now() > +reset) {
+            localStorage.removeItem(KEY_TARGET);
+            localStorage.removeItem(KEY_RESET);
+            startCountdown();
+            return;
+          }
+          const d = Math.floor(diff / 86400000);
+          const h = Math.floor((diff % 86400000) / 3600000);
+          const m = Math.floor((diff % 3600000) / 60000);
+          const s = Math.floor((diff % 60000) / 1000);
+          document.getElementById("cd-days").textContent = String(d).padStart(
+            2,
+            "0",
+          );
+          document.getElementById("cd-hours").textContent = String(h).padStart(
+            2,
+            "0",
+          );
+          document.getElementById("cd-minutes").textContent = String(
+            m,
+          ).padStart(2, "0");
+          document.getElementById("cd-seconds").textContent = String(
+            s,
+          ).padStart(2, "0");
+        }
+        tick();
+        setInterval(tick, 1000);
+      })();
 
-/* ── SIZE CHART TABS ── */
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(btn.dataset.tab).classList.add('active');
-  });
-});
+      /* ── SIZE CHART TABS ── */
+      document.querySelectorAll(".tab-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          document
+            .querySelectorAll(".tab-btn")
+            .forEach((b) => b.classList.remove("active"));
+          document
+            .querySelectorAll(".tab-content")
+            .forEach((c) => c.classList.remove("active"));
+          btn.classList.add("active");
+          document.getElementById(btn.dataset.tab).classList.add("active");
+        });
+      });
 
-/* ── DELIVERY ── */
-function updateDelivery(radio) {
-  deliveryCost = +radio.dataset.cost;
-  document.querySelectorAll('.delivery-label').forEach(l => l.classList.remove('selected'));
-  radio.closest('.delivery-label').classList.add('selected');
-  refreshSummary();
-}
+      /* ── DELIVERY ── */
+      function updateDelivery(radio) {
+        deliveryCost = +radio.dataset.cost;
+        document
+          .querySelectorAll(".delivery-label")
+          .forEach((l) => l.classList.remove("selected"));
+        radio.closest(".delivery-label").classList.add("selected");
+        refreshSummary();
+      }
 
-/* ── ADD SIMPLE PRODUCT ── */
-function addSimple(id, name, price, img, btn) {
-  const key = 'simple_' + id;
-  if (cart[key]) {
-    cart[key].qty++;
-  } else {
-    cart[key] = { name, price, qty: 1, img };
-  }
-  updateQtyDisplay(id, cart[key].qty);
-  document.getElementById('qty-' + id).classList.add('visible');
-  refreshSummary();
-}
+      /* ── ADD SIMPLE PRODUCT ── */
+      function addSimple(id, name, price, img, btn) {
+        const key = "simple_" + id;
+        if (cart[key]) {
+          cart[key].qty++;
+        } else {
+          cart[key] = { name, price, qty: 1, img };
+        }
+        updateQtyDisplay(id, cart[key].qty);
+        document.getElementById("qty-" + id).classList.add("visible");
+        refreshSummary();
+      }
 
-/* ── CHANGE QTY ── */
-function changeQty(id, delta) {
-  // check both simple_ and variant_ keys
-  let key = 'simple_' + id;
-  if (!cart[key]) {
-    // find variant key
-    key = Object.keys(cart).find(k => k.startsWith('var_') && cart[k]._parentId == id);
-  }
-  if (!key || !cart[key]) return;
-  cart[key].qty += delta;
-  if (cart[key].qty <= 0) {
-    delete cart[key];
-    const qEl = document.getElementById('qty-' + id);
-    if (qEl) qEl.classList.remove('visible');
-    updateQtyDisplay(id, 0);
-  } else {
-    updateQtyDisplay(id, cart[key].qty);
-  }
-  refreshSummary();
-}
+      /* ── CHANGE QTY ── */
+      function changeQty(id, delta) {
+        // check both simple_ and variant_ keys
+        let key = "simple_" + id;
+        if (!cart[key]) {
+          // find variant key
+          key = Object.keys(cart).find(
+            (k) => k.startsWith("var_") && cart[k]._parentId == id,
+          );
+        }
+        if (!key || !cart[key]) return;
+        cart[key].qty += delta;
+        if (cart[key].qty <= 0) {
+          delete cart[key];
+          const qEl = document.getElementById("qty-" + id);
+          if (qEl) qEl.classList.remove("visible");
+          updateQtyDisplay(id, 0);
+        } else {
+          updateQtyDisplay(id, cart[key].qty);
+        }
+        refreshSummary();
+      }
 
-function updateQtyDisplay(id, qty) {
-  const el = document.getElementById('qval-' + id);
-  if (el) el.textContent = qty;
-}
+      function updateQtyDisplay(id, qty) {
+        const el = document.getElementById("qval-" + id);
+        if (el) el.textContent = qty;
+      }
 
-/* ── VARIATION MODAL ── */
-// regPriceMap: parentId -> regular price (from product card)
-const regPriceMap = {
-  18608: 1800, 18597: 1800,
-  17862: 1100, 17852: 1100, 17716: 1100,
-  17147: 3600, 17141: 3600, 17129: 3600,
-  17003: 1800, 16995: 1800
-};
+      /* ── VARIATION MODAL ── */
+      // regPriceMap: parentId -> regular price (from product card)
+      const regPriceMap = {
+        18608: 1800,
+        18597: 1800,
+        17862: 1100,
+        17852: 1100,
+        17716: 1100,
+        17147: 3600,
+        17141: 3600,
+        17129: 3600,
+        17003: 1800,
+        16995: 1800,
+      };
 
-function openVariation(parentId, name, price, variants, img) {
-  pendingVariation = { parentId, name, price, variants, img };
-  selectedVariantId = null;
+      function openVariation(parentId, name, price, variants, img) {
+        pendingVariation = { parentId, name, price, variants, img };
+        selectedVariantId = null;
 
-  const regPrice = regPriceMap[parentId] || Math.round(price * 1.45);
+        const regPrice = regPriceMap[parentId] || Math.round(price * 1.45);
 
-  const list = document.getElementById('variation-list');
-  list.innerHTML = variants.map(v => `
-    <div class="variation-item ${!v.in_stock ? 'out' : ''}" id="var-card-${v.id}">
-      <img class="var-card-img" src="${img || ''}" alt="${v.name}" onerror="this.style.display='none'">
+        const list = document.getElementById("variation-list");
+        list.innerHTML = variants
+          .map(
+            (v) => `
+    <div class="variation-item ${!v.in_stock ? "out" : ""}" id="var-card-${v.id}">
+      <img class="var-card-img" src="${img || ""}" alt="${v.name}" onerror="this.style.display='none'">
       <span class="var-name">${v.name}</span>
       <div class="var-prices">
         <span class="var-reg-price">৳${regPrice.toLocaleString()}</span>
         <span class="var-sale-price">৳${v.price.toLocaleString()}</span>
       </div>
-      ${v.in_stock
-        ? `<button class="var-buy-btn" onclick="quickAddVariant(${v.id},'${v.name}',${v.price},${parentId})">কিনুন</button>`
-        : `<button class="var-sold-btn" disabled>স্টক আউট</button>`
+      ${
+        v.in_stock
+          ? `<button class="var-buy-btn" onclick="quickAddVariant(${v.id},'${v.name}',${v.price},${parentId})">কিনুন</button>`
+          : `<button class="var-sold-btn" disabled>স্টক আউট</button>`
       }
     </div>
-  `).join('');
+  `,
+          )
+          .join("");
 
-  document.getElementById('variation-modal').classList.add('open');
-}
+        document.getElementById("variation-modal").classList.add("open");
+      }
 
-function quickAddVariant(varId, varName, price, parentId) {
-  const key = 'var_' + varId;
-  const fullName = pendingVariation.name + ' - ' + varName;
+      function quickAddVariant(varId, varName, price, parentId) {
+        const key = "var_" + varId;
+        const fullName = pendingVariation.name + " - " + varName;
 
-  if (cart[key]) {
-    cart[key].qty++;
-  } else {
-    cart[key] = { name: fullName, price, qty: 1, _parentId: parentId };
-  }
+        if (cart[key]) {
+          cart[key].qty++;
+        } else {
+          cart[key] = { name: fullName, price, qty: 1, _parentId: parentId };
+        }
 
-  const qEl = document.getElementById('qty-' + parentId);
-  if (qEl) {
-    qEl.classList.add('visible');
-    const totalQty = Object.values(cart).filter(c => c._parentId == parentId).reduce((a, c) => a + c.qty, 0);
-    updateQtyDisplay(parentId, totalQty);
-  }
+        const qEl = document.getElementById("qty-" + parentId);
+        if (qEl) {
+          qEl.classList.add("visible");
+          const totalQty = Object.values(cart)
+            .filter((c) => c._parentId == parentId)
+            .reduce((a, c) => a + c.qty, 0);
+          updateQtyDisplay(parentId, totalQty);
+        }
 
-  closeModal('variation-modal');
-  refreshSummary();
-}
+        closeModal("variation-modal");
+        refreshSummary();
+      }
 
-function selectVariant(varId, varName, price, parentId, el) {
-  document.querySelectorAll('.variation-item').forEach(i => i.style.borderColor = '');
-  el.style.borderColor = '#00A6CC';
-  el.style.background = '#e0f7ff';
-  selectedVariantId = { varId, varName, price, parentId };
-}
+      function selectVariant(varId, varName, price, parentId, el) {
+        document
+          .querySelectorAll(".variation-item")
+          .forEach((i) => (i.style.borderColor = ""));
+        el.style.borderColor = "#00A6CC";
+        el.style.background = "#e0f7ff";
+        selectedVariantId = { varId, varName, price, parentId };
+      }
 
-function confirmVariation() {
-  if (!selectedVariantId) {
-    alert('দয়া করে একটি সাইজ সিলেক্ট করুন।');
-    return;
-  }
-  const { varId, varName, price, parentId } = selectedVariantId;
-  quickAddVariant(varId, varName, price, parentId);
-}
+      function confirmVariation() {
+        if (!selectedVariantId) {
+          alert("দয়া করে একটি সাইজ সিলেক্ট করুন।");
+          return;
+        }
+        const { varId, varName, price, parentId } = selectedVariantId;
+        quickAddVariant(varId, varName, price, parentId);
+      }
 
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-}
+      function closeModal(id) {
+        document.getElementById(id).classList.remove("open");
+      }
 
-/* ── SUMMARY ── */
-function refreshSummary() {
-  const tbody = document.getElementById('cart-items-tbody');
-  const items = Object.entries(cart);
+      /* ── SUMMARY ── */
+      function refreshSummary() {
+        const tbody = document.getElementById("cart-items-tbody");
+        const items = Object.entries(cart);
 
-  if (items.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="2" class="empty-cart-msg">কার্টে কোনো প্রোডাক্ট নেই।</td></tr>';
-    setTotals(0);
-    return;
-  }
+        if (items.length === 0) {
+          tbody.innerHTML =
+            '<tr><td colspan="2" class="empty-cart-msg">কার্টে কোনো প্রোডাক্ট নেই।</td></tr>';
+          setTotals(0);
+          return;
+        }
 
-  const subtotal = items.reduce((a, [, v]) => a + v.price * v.qty, 0);
+        const subtotal = items.reduce((a, [, v]) => a + v.price * v.qty, 0);
 
-  tbody.innerHTML = items.map(([key, v]) => `
+        tbody.innerHTML = items
+          .map(
+            ([key, v]) => `
     <tr>
       <td>${v.name} × ${v.qty}</td>
       <td>৳${(v.price * v.qty).toLocaleString()}</td>
     </tr>
-  `).join('');
+  `,
+          )
+          .join("");
 
-  setTotals(subtotal);
-}
+        setTotals(subtotal);
+      }
 
-function setTotals(sub) {
-  const total = sub + (sub > 0 ? deliveryCost : 0);
-  const delShow = sub > 0 ? deliveryCost : 0;
+      function setTotals(sub) {
+        const total = sub + (sub > 0 ? deliveryCost : 0);
+        const delShow = sub > 0 ? deliveryCost : 0;
 
-  document.getElementById('summary-sub').textContent   = sub.toLocaleString() + '.00';
-  document.getElementById('summary-del').textContent   = delShow.toLocaleString() + '.00';
-  document.getElementById('summary-total').textContent = total.toLocaleString() + '.00';
-  document.getElementById('btn-total-val').textContent = total.toLocaleString() + '.00';
-  document.getElementById('sticky-total-val').textContent = total.toLocaleString() + '.00';
+        document.getElementById("summary-sub").textContent =
+          sub.toLocaleString() + ".00";
+        document.getElementById("summary-del").textContent =
+          delShow.toLocaleString() + ".00";
+        document.getElementById("summary-total").textContent =
+          total.toLocaleString() + ".00";
+        document.getElementById("btn-total-val").textContent =
+          total.toLocaleString() + ".00";
+        document.getElementById("sticky-total-val").textContent =
+          total.toLocaleString() + ".00";
 
-  const hasItems = sub > 0;
-  document.getElementById('btn-order-desktop').disabled = !hasItems;
-  document.getElementById('btn-sticky').disabled = !hasItems;
-}
+        const hasItems = sub > 0;
+        document.getElementById("btn-order-desktop").disabled = !hasItems;
+        document.getElementById("btn-sticky").disabled = !hasItems;
+      }
 
-/* ── PLACE ORDER ── */
-function placeOrder() {
-  const name = document.getElementById('cust-name').value.trim();
-  const phone = document.getElementById('cust-phone').value.trim();
-  const addr = document.getElementById('cust-address').value.trim();
+      /* ── PLACE ORDER ── */
+      function placeOrder() {
+        const name = document.getElementById("cust-name").value.trim();
+        const phone = document.getElementById("cust-phone").value.trim();
+        const addr = document.getElementById("cust-address").value.trim();
 
-  if (!name || !phone || !addr) {
-    alert('অনুগ্রহ করে আপনার নাম, ফোন নম্বর ও ঠিকানা দিন।');
-    return;
-  }
-  if (Object.keys(cart).length === 0) {
-    alert('কার্টে কোনো প্রোডাক্ট নেই।');
-    return;
-  }
-  document.getElementById('success-modal').classList.add('open');
-}
+        if (!name || !phone || !addr) {
+          alert("অনুগ্রহ করে আপনার নাম, ফোন নম্বর ও ঠিকানা দিন।");
+          return;
+        }
+        if (Object.keys(cart).length === 0) {
+          alert("কার্টে কোনো প্রোডাক্ট নেই।");
+          return;
+        }
+        document.getElementById("success-modal").classList.add("open");
+      }
 
-/* close modal on overlay click */
-document.querySelectorAll('.modal-overlay').forEach(overlay => {
-  overlay.addEventListener('click', e => {
-    if (e.target === overlay) overlay.classList.remove('open');
-  });
-});
+      /* close modal on overlay click */
+      document.querySelectorAll(".modal-overlay").forEach((overlay) => {
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) overlay.classList.remove("open");
+        });
+      });
 
-/* ── AUTO-ADD DEFAULT ITEM (L size Argentine jersey) ── */
-window.addEventListener('DOMContentLoaded', () => {
-  const key = 'var_16999';
-  cart[key] = {
-    name: 'Argentine Jersey (Premium) Player Edition - Thailand - L',
-    price: 1250,
-    qty: 1,
-    _parentId: 16995
-  };
-  const qEl = document.getElementById('qty-16995');
-  if (qEl) { qEl.classList.add('visible'); updateQtyDisplay(16995, 1); }
-  refreshSummary();
-});
-/* ── LIGHTBOX ── */
-const BASE = 'https://shop.prodhan.com/wp-content/uploads/2026/05/';
+      /* ── AUTO-ADD DEFAULT ITEM (L size Argentine jersey) ── */
+      window.addEventListener("DOMContentLoaded", () => {
+        const key = "var_16999";
+        cart[key] = {
+          name: "Argentine Jersey (Premium) Player Edition - Thailand - L",
+          price: 1250,
+          qty: 1,
+          _parentId: 16995,
+        };
+        const qEl = document.getElementById("qty-16995");
+        if (qEl) {
+          qEl.classList.add("visible");
+          updateQtyDisplay(16995, 1);
+        }
+        refreshSummary();
+      });
+      /* ── LIGHTBOX ── */
+      const BASE = "https://shop.prodhan.com/wp-content/uploads/2026/05/";
 
-/*
+      /*
   lbData structure:
   - Single jersey  → groups: [ { label: null,      imgs: [front, back] } ]
   - Combo          → groups: [ { label: 'Jersey ১', imgs: [front, back] },
@@ -1861,297 +2813,379 @@ const BASE = 'https://shop.prodhan.com/wp-content/uploads/2026/05/';
   Each group shows front then back, one at a time.
   Between groups, a divider/label shows which jersey is up next.
 */
-const lbData = [
-  /* 0 – Ball (not a jersey, treat as single with 2 imgs) */
-  {
-    name: 'Trionda FIFA World Cup Ball',
-    reg: '৳1700', sale: '৳1090',
-    groups: [
-      { label: null, imgs: [
-        BASE + 'ChatGPT-Image-May-17-2026-03_06_00-PM-300x300.png',
-        BASE + 'ChatGPT-Image-May-17-2026-03_06_00-PM-1-300x300.png',
-      ]}
-    ]
-  },
-  /* 1 – France single */
-  {
-    name: 'France Jersey (Premium) Player Edition - Thailand',
-    reg: '৳1800', sale: '৳1250',
-    groups: [
-      { label: null, imgs: [
-        BASE + 'ChatGPT-Image-May-17-2026-03_07_16-PM-300x300.png',
-        BASE + 'ChatGPT-Image-May-17-2026-03_07_17-PM.png',
-        BASE + 'ChatGPT-Image-May-17-2026-03_07_27-PM.png',
-        BASE + 'ChatGPT-Image-May-17-2026-03_07_30-PM.png',
-      ]}
-    ]
-  },
-  /* 2 – Portugal Player Edition single */
-  {
-    name: 'Portugal Jersey (Premium) Player Edition - Thailand',
-    reg: '৳1800', sale: '৳1250',
-    groups: [
-      { label: null, imgs: [
-        BASE + 'ChatGPT-Image-May-17-2026-03_06_47-PM-300x300.png',
-        BASE + 'ChatGPT-Image-May-17-2026-03_06_48-PM.png',
-        BASE + 'ChatGPT-Image-May-17-2026-03_06_52-PM.png',
-        BASE + 'ChatGPT-Image-May-17-2026-03_06_59-PM.png',
-        BASE + 'ChatGPT-Image-May-17-2026-03_06_57-PM.png',
-      ]}
-    ]
-  },
-  /* 3 – Portugal Master single */
-  {
-    name: 'Portugal Master Edition Jersey',
-    reg: '৳1100', sale: '৳715',
-    groups: [
-      { label: null, imgs: [
-        BASE + 'Front-Portugal-Master-Edition-300x300.png',
-        BASE + 'Backside-Portugal-Master-Edition.png',
-        BASE + 'Closeup-1-Portugal-Master-Edition.png',
-        BASE + 'Closeup-2-Portugal-Master-Edition.png',
-        BASE + 'Closeup-3-Portugal-Master-Edition.png',
-      ]}
-    ]
-  },
-  /* 4 – Spain Master single */
-  {
-    name: 'Spain Master Edition Jersey',
-    reg: '৳1100', sale: '৳715',
-    groups: [
-      { label: null, imgs: [
-        BASE + 'Spain-Master-Edition-Front-300x300.png',
-        BASE + 'Spain-Master-Edition-Back-300x300.png',
-        BASE + 'Spain-Master-Edition-Detail-03.png',
-        BASE + 'Spain-Master-Edition-Detail-01.png',
-        BASE + 'Spain-Master-Edition-Detail-02.png',
-      ]}
-    ]
-  },
-  /* 5 – Brazil Master single */
-  {
-    name: 'Brazil Master Edition Jersey',
-    reg: '৳1100', sale: '৳715',
-    groups: [
-      { label: null, imgs: [
-        BASE + 'Brazil-Master-Edition-Front-300x300.png',
-        BASE + 'Brazil-Master-Edition-Back-300x300.png',
-      ]}
-    ]
-  },
-  /* 6 – Argentina Master single */
-  {
-    name: 'Argentina Master Edition Jersey',
-    reg: '৳1100', sale: '৳715',
-    groups: [
-      { label: null, imgs: [
-        BASE + 'ChatGPT-Image-May-11-2026-07_29_39-PM-300x300.png',
-        BASE + 'ChatGPT-Image-May-11-2026-07_29_39-PM-1-300x300.png',
-      ]}
-    ]
-  },
-  /* 7 – Arg+Arg Combo */
-  {
-    name: 'Arg+Arg (Premium) Player Edition Combo - Thailand',
-    reg: '৳3600', sale: '৳2500',
-    groups: [
-      { label: 'জার্সি ১ – Argentina', imgs: [
-        BASE + 'এই_জার্সি_টাকে_২টার_কম্বো_202605071556-1-300x300.jpeg',
-        BASE + 'Argentina-Solid-Back-300x300.jpeg',
-      ]},
-      { label: 'জার্সি ২ – Argentina', imgs: [
-        BASE + 'Argentina-Solid-300x300.jpeg',
-        BASE + 'এই_জার্সি_টাকে_২টার_কম্বো_202605071556-2-300x300.jpeg',
-      ]}
-    ]
-  },
-  /* 8 – Br+Br Combo */
-  {
-    name: 'Br+Br (Premium) Player Edition Combo - Thailand',
-    reg: '৳3600', sale: '৳2500',
-    groups: [
-      { label: 'জার্সি ১ – Brazil', imgs: [
-        BASE + 'এই_জার্সি_টাকে_২টার_কম্বো_202605071557-300x300.jpeg',
-        BASE + 'Brazil-Back-300x300.jpeg',
-      ]},
-      { label: 'জার্সি ২ – Brazil', imgs: [
-        BASE + 'Brazil-300x300.jpeg',
-        BASE + 'এই_জার্সি_টাকে_২টার_কম্বো_202605071557-1-300x300.jpeg',
-      ]}
-    ]
-  },
-  /* 9 – Arg+Br Combo */
-  {
-    name: 'Arg+Br (Premium) Player Edition Combo - Thailand',
-    reg: '৳3600', sale: '৳2500',
-    groups: [
-      { label: 'জার্সি ১ – Argentina', imgs: [
-        BASE + 'Argentina-Solid-300x300.jpeg',
-        BASE + 'Argentina-Solid-Back-300x300.jpeg',
-      ]},
-      { label: 'জার্সি ২ – Brazil', imgs: [
-        BASE + 'Brazil-300x300.jpeg',
-        BASE + 'Brazil-Back-300x300.jpeg',
-      ]}
-    ]
-  },
-  /* 10 – Brazil Player Edition single */
-  {
-    name: 'Brazil Jersey (Premium) Player Edition - Thailand',
-    reg: '৳1800', sale: '৳1250',
-    groups: [
-      { label: null, imgs: [
-        BASE + 'Brazil-300x300.jpeg',
-        BASE + 'Brazil-Back-300x300.jpeg',
-      ]}
-    ]
-  },
-  /* 11 – Argentine Player Edition single */
-  {
-    name: 'Argentine Jersey (Premium) Player Edition - Thailand',
-    reg: '৳1800', sale: '৳1250',
-    groups: [
-      { label: null, imgs: [
-        BASE + 'Argentina-Solid-300x300.jpeg',
-        BASE + 'Argentina-Solid-Back-300x300.jpeg',
-      ]}
-    ]
-  },
-];
+      const lbData = [
+        /* 0 – Ball (not a jersey, treat as single with 2 imgs) */
+        {
+          name: "Trionda FIFA World Cup Ball",
+          reg: "৳1700",
+          sale: "৳1090",
+          groups: [
+            {
+              label: null,
+              imgs: [
+                BASE + "ChatGPT-Image-May-17-2026-03_06_00-PM-300x300.png",
+                BASE + "ChatGPT-Image-May-17-2026-03_06_00-PM-1-300x300.png",
+              ],
+            },
+          ],
+        },
+        /* 1 – France single */
+        {
+          name: "France Jersey (Premium) Player Edition - Thailand",
+          reg: "৳1800",
+          sale: "৳1250",
+          groups: [
+            {
+              label: null,
+              imgs: [
+                BASE + "ChatGPT-Image-May-17-2026-03_07_16-PM-300x300.png",
+                BASE + "ChatGPT-Image-May-17-2026-03_07_17-PM.png",
+                BASE + "ChatGPT-Image-May-17-2026-03_07_27-PM.png",
+                BASE + "ChatGPT-Image-May-17-2026-03_07_30-PM.png",
+              ],
+            },
+          ],
+        },
+        /* 2 – Portugal Player Edition single */
+        {
+          name: "Portugal Jersey (Premium) Player Edition - Thailand",
+          reg: "৳1800",
+          sale: "৳1250",
+          groups: [
+            {
+              label: null,
+              imgs: [
+                BASE + "ChatGPT-Image-May-17-2026-03_06_47-PM-300x300.png",
+                BASE + "ChatGPT-Image-May-17-2026-03_06_48-PM.png",
+                BASE + "ChatGPT-Image-May-17-2026-03_06_52-PM.png",
+                BASE + "ChatGPT-Image-May-17-2026-03_06_59-PM.png",
+                BASE + "ChatGPT-Image-May-17-2026-03_06_57-PM.png",
+              ],
+            },
+          ],
+        },
+        /* 3 – Portugal Master single */
+        {
+          name: "Portugal Master Edition Jersey",
+          reg: "৳1100",
+          sale: "৳715",
+          groups: [
+            {
+              label: null,
+              imgs: [
+                BASE + "Front-Portugal-Master-Edition-300x300.png",
+                BASE + "Backside-Portugal-Master-Edition.png",
+                BASE + "Closeup-1-Portugal-Master-Edition.png",
+                BASE + "Closeup-2-Portugal-Master-Edition.png",
+                BASE + "Closeup-3-Portugal-Master-Edition.png",
+              ],
+            },
+          ],
+        },
+        /* 4 – Spain Master single */
+        {
+          name: "Spain Master Edition Jersey",
+          reg: "৳1100",
+          sale: "৳715",
+          groups: [
+            {
+              label: null,
+              imgs: [
+                BASE + "Spain-Master-Edition-Front-300x300.png",
+                BASE + "Spain-Master-Edition-Back-300x300.png",
+                BASE + "Spain-Master-Edition-Detail-03.png",
+                BASE + "Spain-Master-Edition-Detail-01.png",
+                BASE + "Spain-Master-Edition-Detail-02.png",
+              ],
+            },
+          ],
+        },
+        /* 5 – Brazil Master single */
+        {
+          name: "Brazil Master Edition Jersey",
+          reg: "৳1100",
+          sale: "৳715",
+          groups: [
+            {
+              label: null,
+              imgs: [
+                BASE + "Brazil-Master-Edition-Front-300x300.png",
+                BASE + "Brazil-Master-Edition-Backside.png",
+                BASE + "Brazil-Master-Edition-Closeup-01.png",
+                BASE + "Brazil-Master-Edition-Closeup-2.png",
+                BASE + "Brazil-Master-Edition-Backside-Close.png",
+              ],
+            },
+          ],
+        },
+        /* 6 – Argentina Master single */
+        {
+          name: "Argentina Master Edition Jersey",
+          reg: "৳1100",
+          sale: "৳715",
+          groups: [
+            {
+              label: null,
+              imgs: [
+                BASE + "ChatGPT-Image-May-11-2026-07_29_39-PM-300x300.png",
+                BASE + "ChatGPT-Image-May-11-2026-07_29_54-PM.png",
+              ],
+            },
+          ],
+        },
+        /* 7 – Arg+Arg Combo */
+        {
+          name: "Arg+Arg (Premium) Player Edition Combo - Thailand",
+          reg: "৳3600",
+          sale: "৳2500",
+          groups: [
+            {
+              label: "জার্সি ১ – Argentina",
+              imgs: [
+                BASE + "এই_জার্সি_টাকে_২টার_কম্বো_202605071556-1-300x300.jpeg",
+                BASE + "Argentina-Solid.jpeg",
+                BASE + "Argentina-Backside.jpeg",
+                BASE + "Argentina-Final.jpeg",
+                BASE + "Closeup-01.jpeg",
+                BASE + "Closeup-02.jpeg",
+                BASE + "Closeup-06.jpeg",
+                BASE + "Closeup-05.jpeg",
+              ],
+            },
+            // {
+            //   label: "জার্সি ২ – Argentina",
+            //   imgs: [
+            //     BASE + "Argentina-Solid-300x300.jpeg",
+            //     BASE + "এই_জার্সি_টাকে_২টার_কম্বো_202605071556-2-300x300.jpeg",
+            //   ],
+            // },
+          ],
+        },
+        /* 8 – Br+Br Combo */
+        {
+          name: "Br+Br (Premium) Player Edition Combo - Thailand",
+          reg: "৳3600",
+          sale: "৳2500",
+          groups: [
+            {
+              label: "জার্সি ১ – Brazil",
+              imgs: [
+                BASE + "এই_জার্সি_টাকে_২টার_কম্বো_202605071557-300x300.jpeg",
+                BASE + "Brazil-Back-300x300.jpeg",
+              ],
+            },
+            {
+              label: "জার্সি ২ – Brazil",
+              imgs: [
+                BASE + "Brazil-300x300.jpeg",
+                BASE + "এই_জার্সি_টাকে_২টার_কম্বো_202605071557-1-300x300.jpeg",
+              ],
+            },
+          ],
+        },
+        /* 9 – Arg+Br Combo */
+        {
+          name: "Arg+Br (Premium) Player Edition Combo - Thailand",
+          reg: "৳3600",
+          sale: "৳2500",
+          groups: [
+            {
+              label: "জার্সি ১ – Argentina",
+              imgs: [
+                BASE + "Argentina-Solid-300x300.jpeg",
+                BASE + "Argentina-Solid-Back-300x300.jpeg",
+              ],
+            },
+            {
+              label: "জার্সি ২ – Brazil",
+              imgs: [
+                BASE + "Brazil-300x300.jpeg",
+                BASE + "Brazil-Back-300x300.jpeg",
+              ],
+            },
+          ],
+        },
+        /* 10 – Brazil Player Edition single */
+        {
+          name: "Brazil Jersey (Premium) Player Edition - Thailand",
+          reg: "৳1800",
+          sale: "৳1250",
+          groups: [
+            {
+              label: null,
+              imgs: [
+                BASE + "Brazil-300x300.jpeg",
+                BASE + "Brazil-Back-300x300.jpeg",
+              ],
+            },
+          ],
+        },
+        /* 11 – Argentine Player Edition single */
+        {
+          name: "Argentine Jersey (Premium) Player Edition - Thailand",
+          reg: "৳1800",
+          sale: "৳1250",
+          groups: [
+            {
+              label: null,
+              imgs: [
+                BASE + "Argentina-Solid-300x300.jpeg",
+                BASE + "Argentina-Solid-Back-300x300.jpeg",
+              ],
+            },
+          ],
+        },
+      ];
 
-/* ── Lightbox state ── */
-let lbProductIdx = 0;
-let lbGroupIdx   = 0;   // which jersey group (for combo)
-let lbImgIdx     = 0;   // which image within group (0=front,1=back)
+      /* ── Lightbox state ── */
+      let lbProductIdx = 0;
+      let lbGroupIdx = 0; // which jersey group (for combo)
+      let lbImgIdx = 0; // which image within group (0=front,1=back)
 
-/* Flatten groups into a slide list: [{groupLabel, url, side}, ...] */
-function buildSlides(p) {
-  const slides = [];
-  p.groups.forEach(g => {
-    g.imgs.forEach((url, i) => {
-      slides.push({
-        url,
-        groupIdx: p.groups.indexOf(g),
-        isFirstInGroup: i === 0,
-      });
-    });
-  });
-  return slides;
-}
-
-let lbSlides = [];
-
-function openLightbox(productIdx) {
-  lbProductIdx = productIdx;
-  lbImgIdx = 0;
-  const p = lbData[productIdx];
-  lbSlides = buildSlides(p);
-
-  document.getElementById('lb-img').src = lbSlides[0].url;
-  document.getElementById('lb-name').textContent = p.name;
-  document.getElementById('lb-reg').textContent = p.reg;
-  document.getElementById('lb-sale').textContent = p.sale;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow = 'hidden';
-  renderLb();
-}
-
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function lbOverlayClick(e) {
-  if (e.target === document.getElementById('lightbox')) closeLightbox();
-}
-
-function renderLb() {
-  const p = lbData[lbProductIdx];
-  const slide = lbSlides[lbImgIdx];
-  const total = lbSlides.length;
-  const isCombo = p.groups.length > 1;
-
-  /* image */
-  const imgEl = document.getElementById('lb-img');
-  imgEl.style.animation = 'none';
-  imgEl.offsetHeight;
-  imgEl.style.animation = '';
-  imgEl.src = slide.url;
-  imgEl.alt = p.name;
-
-  /* name & price */
-  document.getElementById('lb-name').textContent = p.name;
-  document.getElementById('lb-reg').textContent = p.reg;
-  document.getElementById('lb-sale').textContent = p.sale;
-
-  /* counter */
-  document.getElementById('lb-counter').textContent = (lbImgIdx + 1) + ' / ' + total;
-
-  /* dots */
-  renderDots(total);
-
-  /* arrows */
-  const arrows = document.querySelectorAll('.lb-arrow');
-  arrows.forEach(a => a.style.visibility = total > 1 ? 'visible' : 'hidden');
-  document.getElementById('lb-nav').style.display = total > 1 ? 'flex' : 'none';
-}
-
-function renderDots(total) {
-  const dotsEl = document.getElementById('lb-dots');
-  if (!dotsEl) return;
-  const p = lbData[lbProductIdx];
-  const isCombo = p.groups.length > 1;
-
-  if (total <= 1) { dotsEl.innerHTML = ''; return; }
-
-  /* for combo: show group separators between dots */
-  if (isCombo) {
-    let html = '';
-    let lastGroup = -1;
-    lbSlides.forEach((s, i) => {
-      if (s.groupIdx !== lastGroup) {
-        if (lastGroup !== -1) html += '<span class="lb-dot-sep">|</span>';
-        lastGroup = s.groupIdx;
+      /* Flatten groups into a slide list: [{groupLabel, url, side}, ...] */
+      function buildSlides(p) {
+        const slides = [];
+        p.groups.forEach((g) => {
+          g.imgs.forEach((url, i) => {
+            slides.push({
+              url,
+              groupIdx: p.groups.indexOf(g),
+              isFirstInGroup: i === 0,
+            });
+          });
+        });
+        return slides;
       }
-      html += `<span class="lb-dot ${i === lbImgIdx ? 'active' : ''}" onclick="lbGoTo(${i})"></span>`;
-    });
-    dotsEl.innerHTML = html;
-  } else {
-    dotsEl.innerHTML = lbSlides.map((_, i) =>
-      `<span class="lb-dot ${i === lbImgIdx ? 'active' : ''}" onclick="lbGoTo(${i})"></span>`
-    ).join('');
-  }
-}
 
-function lbGoTo(i) {
-  lbImgIdx = i;
-  renderLb();
-}
+      let lbSlides = [];
 
-function lbMove(dir) {
-  lbImgIdx = (lbImgIdx + dir + lbSlides.length) % lbSlides.length;
-  renderLb();
-}
+      function openLightbox(productIdx) {
+        lbProductIdx = productIdx;
+        lbImgIdx = 0;
+        const p = lbData[productIdx];
+        lbSlides = buildSlides(p);
 
-// Touch/swipe support
-let lbTouchStartX = 0;
-document.getElementById('lightbox') && document.getElementById('lightbox').addEventListener('touchstart', e => {
-  lbTouchStartX = e.touches[0].clientX;
-}, { passive: true });
-document.addEventListener('touchend', e => {
-  if (!document.getElementById('lightbox').classList.contains('open')) return;
-  const diff = e.changedTouches[0].clientX - lbTouchStartX;
-  if (Math.abs(diff) > 50) lbMove(diff < 0 ? 1 : -1);
-});
+        document.getElementById("lb-img").src = lbSlides[0].url;
+        document.getElementById("lb-name").textContent = p.name;
+        document.getElementById("lb-reg").textContent = p.reg;
+        document.getElementById("lb-sale").textContent = p.sale;
+        document.getElementById("lightbox").classList.add("open");
+        document.body.style.overflow = "hidden";
+        renderLb();
+      }
 
-// Keyboard support
-document.addEventListener('keydown', e => {
-  if (!document.getElementById('lightbox').classList.contains('open')) return;
-  if (e.key === 'ArrowRight') lbMove(1);
-  if (e.key === 'ArrowLeft') lbMove(-1);
-  if (e.key === 'Escape') closeLightbox();
-});
-</script>
+      function closeLightbox() {
+        document.getElementById("lightbox").classList.remove("open");
+        document.body.style.overflow = "";
+      }
 
-</body>
+      function lbOverlayClick(e) {
+        if (e.target === document.getElementById("lightbox")) closeLightbox();
+      }
+
+      function renderLb() {
+        const p = lbData[lbProductIdx];
+        const slide = lbSlides[lbImgIdx];
+        const total = lbSlides.length;
+        const isCombo = p.groups.length > 1;
+
+        /* image */
+        const imgEl = document.getElementById("lb-img");
+        imgEl.style.animation = "none";
+        imgEl.offsetHeight;
+        imgEl.style.animation = "";
+        imgEl.src = slide.url;
+        imgEl.alt = p.name;
+
+        /* name & price */
+        document.getElementById("lb-name").textContent = p.name;
+        document.getElementById("lb-reg").textContent = p.reg;
+        document.getElementById("lb-sale").textContent = p.sale;
+
+        /* counter */
+        document.getElementById("lb-counter").textContent =
+          lbImgIdx + 1 + " / " + total;
+
+        /* dots */
+        renderDots(total);
+
+        /* arrows */
+        const arrows = document.querySelectorAll(".lb-arrow");
+        arrows.forEach(
+          (a) => (a.style.visibility = total > 1 ? "visible" : "hidden"),
+        );
+        document.getElementById("lb-nav").style.display =
+          total > 1 ? "flex" : "none";
+      }
+
+      function renderDots(total) {
+        const dotsEl = document.getElementById("lb-dots");
+        if (!dotsEl) return;
+        const p = lbData[lbProductIdx];
+        const isCombo = p.groups.length > 1;
+
+        if (total <= 1) {
+          dotsEl.innerHTML = "";
+          return;
+        }
+
+        /* for combo: show group separators between dots */
+        if (isCombo) {
+          let html = "";
+          let lastGroup = -1;
+          lbSlides.forEach((s, i) => {
+            if (s.groupIdx !== lastGroup) {
+              if (lastGroup !== -1) html += '<span class="lb-dot-sep">|</span>';
+              lastGroup = s.groupIdx;
+            }
+            html += `<span class="lb-dot ${i === lbImgIdx ? "active" : ""}" onclick="lbGoTo(${i})"></span>`;
+          });
+          dotsEl.innerHTML = html;
+        } else {
+          dotsEl.innerHTML = lbSlides
+            .map(
+              (_, i) =>
+                `<span class="lb-dot ${i === lbImgIdx ? "active" : ""}" onclick="lbGoTo(${i})"></span>`,
+            )
+            .join("");
+        }
+      }
+
+      function lbGoTo(i) {
+        lbImgIdx = i;
+        renderLb();
+      }
+
+      function lbMove(dir) {
+        lbImgIdx = (lbImgIdx + dir + lbSlides.length) % lbSlides.length;
+        renderLb();
+      }
+
+      // Touch/swipe support
+      let lbTouchStartX = 0;
+      document.getElementById("lightbox") &&
+        document.getElementById("lightbox").addEventListener(
+          "touchstart",
+          (e) => {
+            lbTouchStartX = e.touches[0].clientX;
+          },
+          { passive: true },
+        );
+      document.addEventListener("touchend", (e) => {
+        if (!document.getElementById("lightbox").classList.contains("open"))
+          return;
+        const diff = e.changedTouches[0].clientX - lbTouchStartX;
+        if (Math.abs(diff) > 50) lbMove(diff < 0 ? 1 : -1);
+      });
+
+      // Keyboard support
+      document.addEventListener("keydown", (e) => {
+        if (!document.getElementById("lightbox").classList.contains("open"))
+          return;
+        if (e.key === "ArrowRight") lbMove(1);
+        if (e.key === "ArrowLeft") lbMove(-1);
+        if (e.key === "Escape") closeLightbox();
+      });
+    </script>
+  </body>
 </html>
